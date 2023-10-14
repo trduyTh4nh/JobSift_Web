@@ -1,4 +1,34 @@
-.App {
+:root{
+  --primary-color: #E2F367;
+  --secondary-color: #232323;
+  --body-bg: #FFFFFF;
+  --div-item: #D8DB42; 
+  --paypal-color: #353FDF;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: "DM Sans", sans-serif;
+  background: var(--primary-color);
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: unset;
+}
+
+.main__layout{
+  margin-left: 270px;
+}
+/* .App {
   text-align: center;
 }
 
@@ -45,4 +75,4 @@
 
 .body{
   position: absolute;
-}
+} */
