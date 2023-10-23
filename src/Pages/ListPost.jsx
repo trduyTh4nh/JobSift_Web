@@ -2,7 +2,13 @@ import React from 'react'
 
 const ListPost = () => {
   return (
-    <div>ListPost</div>
+    <div className='main__layout-mini'>
+      <div className="identical__title">
+        <span>List Post</span>
+      </div>
+      
+
+    </div>
   )
 }
 
