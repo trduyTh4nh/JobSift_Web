@@ -1,4 +1,4 @@
-:root{
+/* :root{
   --primary-color: #E2F367;
   --secondary-color: #232323;
   --body-bg: #FFFFFF;
@@ -13,7 +13,7 @@
 
 body{
   font-family: "DM Sans", sans-serif;
-  background: var(--primary-color);
+  background: var(--primary-color); 
 }
 
 ul{
@@ -28,6 +28,14 @@ a{
 .main__layout{
   margin-left: 270px;
 }
+a.nav_limk{
+  font-size: 50px;
+
+}
+.body_temp {
+  height: 100%;
+  width: 100%;
+} */
 /* .App {
   text-align: center;
 }

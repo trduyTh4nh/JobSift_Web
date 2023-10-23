@@ -5,6 +5,10 @@ import AccountSettings from '../Pages/AccountSettings'
 import Home from '../Pages/Home'
 import Manage from '../Pages/Manage'
 import Statistical from '../Pages/Statistical'
+import Contact from '../Pages/Contact'
+import Aboutme from '../Pages/Aboutme'
+import Homepage from '../Pages/Homepage';
+
 const Router = () => {
   return (
 
@@ -15,6 +19,9 @@ const Router = () => {
         <Route path='/statistical' element={<Statistical/>}/>
         <Route path='/manage' element={<Manage/>}/>
         <Route path='/accountSettings' element={<AccountSettings/>}/>
+        <Route path='/Homepage' element={<Homepage/>}/>
+        <Route path='/Contact' element={<Contact/>}/>
+        <Route path='/Aboutme' element={<Aboutme/>}/>
       </Routes>
 
   )

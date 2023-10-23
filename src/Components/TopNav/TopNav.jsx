@@ -1,4 +1,5 @@
 import React from 'react'
+import "./TopNav.css"
 
 const TopNav = () => {
   return (
@@ -6,7 +7,7 @@ const TopNav = () => {
       <div className="top__nav-wrapper">
         
         <div className="search__box">
-          <input type="text" placeholder='search or type'/>
+          <input type="text" placeholder='search or type '/>
           <span><i>iconSeach</i></span>
         </div>
         <div className="top__nav-right">
