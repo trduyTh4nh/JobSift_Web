@@ -140,6 +140,8 @@ a{
 .profile__body-face{
   display: flex;
   justify-content: space-between;
+  /* justify-content: flex-start; */
+  /* justify-content:left; */
   flex-wrap: wrap;
 }
 .profile__body-info-user{
@@ -148,11 +150,16 @@ a{
 .profile__body-info-user input{
   padding: 10px;
   height: 30px;
-  width: 200px;
+  width: 240px;
+  /* width: auto; */
   background: var(--btn-bg-input);
   font-weight: 600;
   border-radius: 5px;
   border: none;
+}
+.company__value-logo{
+  height: 240px;
+  width: 240px;
 }
 
 .profile__body-company{
@@ -267,12 +274,38 @@ a{
 
 
 /* My Compamy */
+
+
+
 .main__layout-mini-myCompany{
-  padding: 57px 30px 0 30px;
+  padding: 97px 30px 15px 40px;
   height: 100%;
   border-bottom-left-radius: 50px;
   border-top-left-radius: 50px;
   background: var(--body-bg);
+}
+
+.main__layout-mini-myCompany li{
+  /* display: flex;
+  column-gap: 20px;
+  margin: 15px 0; */
+  display: table-cell;
+  position: relative;
+  padding: 15px 0;
+} 
+.main__layout-mini-myCompany li a{
+
+  text-decoration: none;
+    box-shadow: 0 3px tomato;
+    padding: 4px;
+    color: black;
+}
+.main__layout-mini-myCompany li a:hover {
+  font-weight: 600;
+  box-shadow: 0 3px yellow;
+}
+.main__layout-mini-myCompany h3{
+  margin: 10px 0;
 }
 
 
@@ -296,6 +329,105 @@ a{
   font-weight: 900;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+.company__header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 100px;
+  @media screen and (max-width: 968px) {
+    flex-wrap: wrap;
+    
+  }
+}
+
+.company__header-face{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.company__logo-main{
+  height: 85px;
+  @media screen and (max-width: 768px) {
+    height: 60px;
+    
+  }
+}
+
+.company__name-comp{
+  font-size: 2.5rem;
+  font-weight: 600;
+  @media screen and (max-width: 768px) {
+    font-size: 1.8rem;
+    
+  }
+}
+
+.company__header button{
+  height: 30px;
+  background: var(--button-color);
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.gr__btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+}
+.gr__btn img{
+  height: 15px;
+}
+
+.company__body{
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: var(--btn-bg-input);
+  border-radius: 5px;
+  gap: 20px;
+}
+
+.company__body-company-info{
+  /* display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; */
+  display: grid;
+}
+
+.company__body-company-info-item{
+  display: flex;
+  column-gap: 5px;
+}
+.company__body-company-info-content p{
+  color: var(--text-color-secondary);
+}
+.company__body-company-info-content span{
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.company__body-company-description span{
+  color: var(--text-color-third);
+  font-weight: 600;
+}
+
+.company__body-ggMap img{
+  height: 220px;
+}
+
+.company__footer{
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+.company__footer img{
+  height: 25px;
+}
+
 /* .App {
   text-align: center;
 }

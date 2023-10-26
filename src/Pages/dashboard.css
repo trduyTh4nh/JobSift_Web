@@ -22,6 +22,7 @@ body {
 .single__card {
     background-color: #3D3D3D;
     padding: 20px;
+    margin: 10px 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,13 +62,15 @@ body {
 
 .dashboard__cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, 270px);
+    column-gap: 1.8rem;
 }
+
 
 .div__card {
     background: var(--div-card);
     padding: 20px;
+    margin: 10px 0px;
     border-radius: 20px;
     text-align: center;
     height: 180px;
