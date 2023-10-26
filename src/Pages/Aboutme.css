@@ -1,0 +1,13 @@
+.titel_about {
+    display: flex;
+    margin-top: 30px;
+}
+.sty_text{
+    display: block;
+    margin-top: 50px;
+    text-align: center;
+    width: 50%;
+    margin-left: 20%;
+    font-weight: bold;
+    font-size: 15px;
+}

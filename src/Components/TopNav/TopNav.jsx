@@ -1,4 +1,8 @@
 import React from 'react'
+// <<<<<<< Long
+// import "./TopNav.css"
+
+// =======
 import './topNav.css'
 import iconSearch from '../../assets/images/iconSearch.svg';
 import iconNotifi from '../../assets/images/notifi.svg';
@@ -25,6 +29,13 @@ const TopNav = () => {
 
   return (
     <div className="top__nav">
+// <<<<<<< Long
+//       <div className="top__nav-wrapper">
+        
+//         <div className="search__box">
+//           <input type="text" placeholder='search or type '/>
+//           <span><i>iconSeach</i></span>
+// =======
 
       <div className="top__nav-wrapper ">
 

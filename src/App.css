@@ -1,3 +1,4 @@
+
 :root{
   --primary-color: #F2F3C4;
   --secondary-color: #232323;
@@ -20,6 +21,7 @@
 body{
   font-family: "DM Sans", sans-serif;
 
+  background: var(--primary-color); 
 
 }
 
@@ -314,6 +316,16 @@ a{
   /* position: fixed; */
   margin-left: 270px;
 }
+
+a.nav_limk{
+  font-size: 50px;
+
+}
+.body_temp {
+  height: 100%;
+  width: 100%;
+} */
+
 .main__layout-1{
   margin-left: 270px;
   width: auto;
@@ -427,6 +439,7 @@ a{
 .company__footer img{
   height: 25px;
 }
+
 
 /* .App {
   text-align: center;
