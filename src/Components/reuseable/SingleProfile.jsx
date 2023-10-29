@@ -3,9 +3,38 @@ import LineImg from '../../assets/images/line.svg';
 import EmailImg from '../../assets/images/mail-line.svg';
 import MapImg from '../../assets/images/map-line.svg';
 import IconBCT from '../../assets/images/icon__cm.svg';
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 const SingleProfile = (props) => {
-  const { id, fullname, username, password, email_user, email_doanh_nghiep,avt_user, logo, name_comp, dia_chi, toa_do, mo_ta } = props.item;
+
+  const { id, fullname, username, password, email_user, email_doanh_nghiep, avt_user, logo, name_comp, dia_chi, toa_do, mo_ta } = props.item;
+
+  const [textFullName, setTextFullName] = useState(`${fullname}`)
+
+  const handleChangeTextFullName = (text) => {
+    setTextFullName(text.target.value)
+  }
+
+  const [textUserName, setTextUserName] = useState(`${username}`)
+
+  const handleChangeTextUserName = (text) => {
+    setTextUserName(text.target.value)
+  }
+
+  const [textPassword, setTextPassword] = useState(`${password}`)
+
+  const handleChangeTextPassword = (text) => {
+    setTextPassword(text.target.value)
+  }
+
+  const [textEmail, setTextEmail] = useState(`${email_user}`)
+
+  const handleChangeTextEmail = (text) => {
+    setTextEmail(text.target.value)
+  }
+
+
   return (
     <div className='main__layout-mini-myProfile1'>
 
@@ -23,24 +52,24 @@ const SingleProfile = (props) => {
       <div className="profile__body-face">
         <div className="profile__body-info-user">
           <span>Full name</span>
-          <input type="text" value={fullname} placeholder='Full name' />
+          <input type="text" onChange={handleChangeTextFullName} value={textFullName} placeholder='Full name' />
         </div>
 
         <div className="profile__body-info-user">
           <span>Username</span>
-          <input type="text" value={username} placeholder='Full name' />
+          <input type="text" onChange={handleChangeTextUserName} value={textUserName} placeholder='User name' />
         </div>
 
         <div className="profile__body-info-user">
           <span>Password</span>
-          <input type="password" value={password} placeholder='Full name' />
+          <input type="password" onChange={handleChangeTextPassword} value={textPassword} placeholder='Password' />
         </div>
 
         <div className="profile__body-info-user">
           <span>Email</span>
-          <input type="text" value={email_user} placeholder='Full name' />
+          <input type="text" onChange={handleChangeTextEmail} value={textEmail} placeholder='Email' />
         </div>
-        
+
       </div>
 
       <h3>Company</h3>
@@ -51,11 +80,13 @@ const SingleProfile = (props) => {
             <img className='flexible-img-logo' src={logo} alt="" />
             <span className='flexible-text'>{name_comp}</span>
           </div>
-          
+
           <div className="profile__body-company-btnEdit">
             <button className='profile__btn-edit'>
-              Edit
-              <img src={LineImg} alt="" />
+              <NavLink to="companybtnEdit">
+                Edit
+                <img src={LineImg} alt="" />
+              </NavLink>
             </button>
           </div>
         </div>

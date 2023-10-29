@@ -1,5 +1,7 @@
 import React from 'react';
 import "./dashboard.css";
+import { Link } from 'react-router-dom';
+
 import SingleCard from '../Components/reuseable/SingleCard';
 import DivCard from '../Components/reuseable/Divcard';
 import icon1Img from '../assets/images/icon1.svg';
@@ -67,7 +69,7 @@ const Dashboard = () => {
           <SingleCard item={card1Obj} />
           <SingleCard item={card2Obj} />
           <SingleCard item={card3Obj} />
-          <SingleCard item={card4Obj} />
+          <Link to = './diamondDashboard'><SingleCard item={card4Obj} /></Link>
         </div>
       </div>
       <div className="dashboard__wrapper-div">

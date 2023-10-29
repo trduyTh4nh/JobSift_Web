@@ -9,9 +9,9 @@ import LogoCompanyImg from '../assets/images/logo_company.svg';
 import { NavLink } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import AllTime from '../Components/NestedRouter_comp/AllTime';
-import ThisMonth from '../Components/NestedRouter_comp/ThisMonth';
-import ThisYear from '../Components/NestedRouter_comp/ThisYear';
+// import AllTime from '../Components/NestedRouter_comp/AllTime';
+// import ThisMonth from '../Components/NestedRouter_comp/ThisMonth';
+// import ThisYear from '../Components/NestedRouter_comp/ThisYear';
 
 import EmailImg from '../assets/images/mail-line.svg';
 import MapImg from '../assets/images/map-line.svg';

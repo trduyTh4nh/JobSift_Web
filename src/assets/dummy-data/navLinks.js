@@ -38,11 +38,11 @@ const navLinks = [
       icon: accountImg,
       display: "Account Settings",
     },
-    {
-      path: "/myWallet",
-      icon: myWalletImg,
-      display: "My Wallet",
-    },
+    // {
+    //   path: "/myWallet",
+    //   icon: myWalletImg,
+    //   display: "My Wallet",
+    // },
   ];
   
   export default navLinks;

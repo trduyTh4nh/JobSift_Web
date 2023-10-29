@@ -1,11 +1,14 @@
 import React from 'react'
-// <<<<<<< Long
-// import "./TopNav.css"
-
-// =======
 import './topNav.css'
+import { Link } from 'react-router-dom';
 import iconSearch from '../../assets/images/iconSearch.svg';
 import iconNotifi from '../../assets/images/notifi.svg';
+
+import Home from '../../Page/Home';
+import Chat from '../../Page/Chat';
+import Contact from '../../Page/Contact';
+import AboutMe from '../../Page/AboutMe';
+
 const TopNav = () => {
 
   var win = window;
@@ -29,40 +32,41 @@ const TopNav = () => {
 
   return (
     <div className="top__nav">
-// <<<<<<< Long
-//       <div className="top__nav-wrapper">
-        
-//         <div className="search__box">
-//           <input type="text" placeholder='search or type '/>
-//           <span><i>iconSeach</i></span>
-// =======
 
       <div className="top__nav-wrapper ">
 
         <div className="top__nav-left">
           <div className='wrap-option'>
             <a className='top__nav-link'>
-              Home
+              <Link to = "home" >
+                <Home/>
+              </Link>
             </a>
           </div>
 
 
           <div className='wrap-option'>
             <a className='top__nav-link'>
-              Chat
+              <Link to = "chat">
+                <Chat/>
+              </Link>
             </a>
           </div>
 
 
           <div className='wrap-option'>
             <a className='top__nav-link'>
-              Contact
+              <Link to = "contact">
+                <Contact/>
+              </Link>
             </a>
           </div>
 
           <div className='wrap-option'>
             <a className='top__nav-link'>
-              About us
+              <Link to = "aboutMe">
+                <AboutMe/>
+              </Link>
             </a>
           </div>
 

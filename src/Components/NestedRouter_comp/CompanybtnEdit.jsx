@@ -27,27 +27,35 @@ const CompanybtnEdit = () => {
 
       <h3>Basic Information</h3>
 
-      <div className="profile__body-face">
-        <div className="profile__body-info-user">
+      <div className="company__body-face">
+        <div className="company__body-info-user">
           <span>Name</span>
           <input type="text" value={Company.name_comp} placeholder='Full name' />
         </div>
 
-        <div className="profile__body-info-user">
-          <span>Username</span>
+        <div className="company__body-info-user1">
+          <span>Logo</span>
           <input type="file" placeholder='' />
+          <div className='imgLogo-into'></div>
         </div>
       
-        <div className="profile__body-info-user">
-          <span>Password</span>
+        <div className="company__body-info-user">
+          <span>Address</span>
           <input type="ptext" value={Company.dia_chi} placeholder='Full name' />
         </div>
 
-        <div className="profile__body-info-user">
+        <div className="company__body-info-user">
           <span>Email</span>
           <input type="text" value={Company.email_doanh_nghiep} placeholder='Full name' />
         </div>
 
+      </div>
+
+      <div className='company__body-description'>
+        <span>Description</span>
+        <div className='bg__description'>
+          <p>{Company.mo_ta}</p>
+        </div>
       </div>
     </div>
   )
