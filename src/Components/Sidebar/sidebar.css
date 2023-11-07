@@ -1,19 +1,17 @@
 .sidebar{
     width: 260px;
-    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    /* z-index: 999; */
     background: var(--body-bg);
     padding:0px 30px;
+    height: 100%;
     
 }
 
 .sidebar__top{
     width: 100%;
     height: 70px;
-    line-height: 70px;
 }
 
 .sidebar__top h2{
@@ -38,18 +36,22 @@
 
 .sidebar__content{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between !important;
     flex-direction: column;
-    height: calc(100% - 5%);
-    margin-top: 40px;
+}
+.box-wrap{
+    display: flex;
+    justify-content: space-between !important;
+    flex-direction: column;
+    height: 70%;
 }
 
 .menu{
-    height: 67%;
+    
 }
 
 .sidebar__bottom{
-    height: 33%;
+    height: 0%;
 }
 
 .nav__link , 
@@ -73,6 +75,9 @@
     display: flex;
     row-gap: 1.7rem;
     flex-direction: column;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18;
+    font-weight: 600;
 }
 .nav__item span{
     height: 20px;
