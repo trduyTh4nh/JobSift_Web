@@ -1,0 +1,186 @@
+.top__nav{
+    position: fixed;
+    top: 0;
+    /* background: var(--primary-color); */
+    width: 100%;
+    line-height: 70px;
+    display: flex;
+    border-top-left-radius: 50px;
+    justify-content: space-between;
+}
+.top__nav-wrapper{
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+   align-items: center;
+   padding: 0 300px 0 40px;
+   transition: linear 0.2s;
+}
+.top__nav-wrapper-blur{
+    backdrop-filter: blur(10px);
+    color: azure !important;
+    border-bottom: 3px solid;
+    border-color: #000;
+}
+
+.left-component{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.search_box, 
+.box__nav-right {
+    width: 50%;
+}
+/* .top__nav-right{
+    text-align: right;
+} */
+.top__nav-right{
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+    justify-content: flex-end;
+}
+/* .search_box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--body-bg);
+    padding:0px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 40px;
+} */
+.search_box input{
+    
+    border: none;
+    outline: none;
+    color: var(--body-bg);
+}
+.search_box input::placeholder{
+    color: #7E7E7E;
+}
+.search_box span i{
+    color: #7E7E7E;
+}
+.top__nav-link{
+    font-weight: 800;
+    color: #343434;
+    transition: linear 0.2s;
+}
+.top__nav-link:hover{
+    cursor: pointer;
+    color: #7E7E7E;
+}
+.top__nav-left{
+    display: flex;
+    gap: 40px;
+}
+.notification{
+    color: #7E7E7E;
+    font-size: 1.2rem;
+    cursor: pointer;
+} 
+.notification{
+    position: relative;
+}
+.badge{
+    position: absolute;
+    top: 25%;
+    right: -10%;
+    width: 13px;
+    height: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    font-size: 0.8rem ;
+}
+.seach__input{
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    /* width: 300px; */
+    font-weight: 600;
+}
+.seach__input::placeholder{
+    color: #c6c6c6;
+}
+.icon__search{
+    height: 20px;
+    width: 20px;
+}
+button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.edit__seach__box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--body-bg);
+    padding: 0px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+    height: 45px;
+    /* width: 400px; */
+    padding: 0 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+}
+.icon__notifi{
+    margin-top: 23px;
+    height: 35px;
+    width: 35px;
+}
+.top__nav-right-2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--secondary-color);
+    padding:0px 10px;
+    border-radius: 40px;
+    cursor: pointer;
+    height: 40px;
+    justify-content: center;
+    transition: ease 0.3s;
+}
+.top__nav-right-2:hover{
+    background-color: #6f6f6f;
+}
+.text__btn__post{
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 15px;
+    color: var(--body-bg);
+}
+
+
+/* Layout.css */
+.layout {
+    display: flex !important; 
+    height: 100vh !important; /* Make the layout take the full height of the viewport */
+  }
+  
+  .wrap-body {
+    flex: 1 !important; /* Make it fill the available horizontal space */
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .main__layout {
+    /* Add any other styles you need for the top navigation */
+}
+
+.main__layout-1 {
+    flex: 1 !important; /* Make it fill the available vertical space */
+    /* Add any other styles you need for the router content */
+  }
+  
+.wrap-option{
+    width: 80px;
+}

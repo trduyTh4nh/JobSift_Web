@@ -1,0 +1,86 @@
+import LogoCompanyImg from '../../assets/images/logo_company.svg';
+const jobPostings = [
+    {
+        id: 1,
+        logo: LogoCompanyImg,
+        title: 'Công việc số 1',
+        position: 'Intern',
+        applicants: 10,
+        category: 'Computer Science & IT',
+        report: 32,
+        headquarters:'Lô D26, Khu Đô Thị Mới, Cầu Giấy, Hà Nội, Việt Nam',
+        type:'Full-time',
+        salaryNo1: 14500,
+        salaryNo2: 17500,
+        application: '4/10/2023',
+        description: 'Lorem ipsum dolor sit amet consectetur. Mattis ipsum id adipiscing dis pretium lobortis. Convallis cras pulvinar cursus arcu ultricies in quam nunc. Dignissim nunc malesuada dui luctus duis pharetra egestas leo faucibus. Ut tortor odio dui lorem feugiat scelerisque. Nibh pharetra augue nullam est. Donec viverra arcu elementum nunc risus pellentesque eu cras amet. Molestie ullamcorper fermentum amet cursus ut habitant. Nibh dictum ut enim vel sagittis etiam mattis mattis odio. Leo velit ridiculus massa enim suspendisse ante quis in duis. In dolor hendrerit sit luctus tortor netus.',
+    },
+    {
+        id: 2,
+        logo: LogoCompanyImg,
+        title: 'Công việc số 2',
+        position: 'Lập trình viên',
+        applicants: 5,
+        category: 'Computer Science & IT',
+        report: 32,
+        headquarters:'Lô D26, Khu Đô Thị Mới, Cầu Giấy, Hà Nội, Việt Nam',
+        type:'Full-time',
+        salaryNo1: 14500,
+        salaryNo2: 17500,
+        application: '4/10/2023',
+        description: 'Lorem ipsum dolor sit amet consectetur. Mattis ipsum id adipiscing dis pretium lobortis. Convallis cras pulvinar cursus arcu ultricies in quam nunc. Dignissim nunc malesuada dui luctus duis pharetra egestas leo faucibus. Ut tortor odio dui lorem feugiat scelerisque. Nibh pharetra augue nullam est. Donec viverra arcu elementum nunc risus pellentesque eu cras amet. Molestie ullamcorper fermentum amet cursus ut habitant. Nibh dictum ut enim vel sagittis etiam mattis mattis odio. Leo velit ridiculus massa enim suspendisse ante quis in duis. In dolor hendrerit sit luctus tortor netus.',
+        
+
+    },
+    {
+        id: 3,
+        logo: LogoCompanyImg,
+        title: 'Công việc số 3',
+        position: 'Intern',
+        applicants: 10,
+        category: 'Computer Science & IT',
+        report: 32,
+        headquarters:'Lô D26, Khu Đô Thị Mới, Cầu Giấy, Hà Nội, Việt Nam',
+        type:'Full-time',
+        salaryNo1: 14500,
+        salaryNo2: 17500,
+        application: '4/10/2023',
+        description: 'Lorem ipsum dolor sit amet consectetur. Mattis ipsum id adipiscing dis pretium lobortis. Convallis cras pulvinar cursus arcu ultricies in quam nunc. Dignissim nunc malesuada dui luctus duis pharetra egestas leo faucibus. Ut tortor odio dui lorem feugiat scelerisque. Nibh pharetra augue nullam est. Donec viverra arcu elementum nunc risus pellentesque eu cras amet. Molestie ullamcorper fermentum amet cursus ut habitant. Nibh dictum ut enim vel sagittis etiam mattis mattis odio. Leo velit ridiculus massa enim suspendisse ante quis in duis. In dolor hendrerit sit luctus tortor netus.',
+        
+
+    },
+    {
+        id: 4,
+        logo: LogoCompanyImg,
+        title: 'Công việc số 4',
+        position: 'Intern',
+        applicants: 10,
+        category: 'Computer Science & IT',
+        report: 32,
+        headquarters:'Lô D26, Khu Đô Thị Mới, Cầu Giấy, Hà Nội, Việt Nam',
+        type:'Full-time',
+        salaryNo1: 14500,
+        salaryNo2: 17500,
+        application: '4/10/2023',
+        description: 'Lorem ipsum dolor sit amet consectetur. Mattis ipsum id adipiscing dis pretium lobortis. Convallis cras pulvinar cursus arcu ultricies in quam nunc. Dignissim nunc malesuada dui luctus duis pharetra egestas leo faucibus. Ut tortor odio dui lorem feugiat scelerisque. Nibh pharetra augue nullam est. Donec viverra arcu elementum nunc risus pellentesque eu cras amet. Molestie ullamcorper fermentum amet cursus ut habitant. Nibh dictum ut enim vel sagittis etiam mattis mattis odio. Leo velit ridiculus massa enim suspendisse ante quis in duis. In dolor hendrerit sit luctus tortor netus.',
+        
+    },
+    {
+        id: 5,
+        logo: LogoCompanyImg,
+        title: 'Công việc số 5',
+        position: 'Intern',
+        applicants: 10,
+        category: 'Computer Science & IT',
+        report: 32,
+        headquarters:'Lô D26, Khu Đô Thị Mới, Cầu Giấy, Hà Nội, Việt Nam',
+        type:'Full-time',
+        salaryNo1: 14500,
+        salaryNo2: 17500,
+        application: '4/10/2023',
+        description: 'Lorem ipsum dolor sit amet consectetur. Mattis ipsum id adipiscing dis pretium lobortis. Convallis cras pulvinar cursus arcu ultricies in quam nunc. Dignissim nunc malesuada dui luctus duis pharetra egestas leo faucibus. Ut tortor odio dui lorem feugiat scelerisque. Nibh pharetra augue nullam est. Donec viverra arcu elementum nunc risus pellentesque eu cras amet. Molestie ullamcorper fermentum amet cursus ut habitant. Nibh dictum ut enim vel sagittis etiam mattis mattis odio. Leo velit ridiculus massa enim suspendisse ante quis in duis. In dolor hendrerit sit luctus tortor netus.',
+        
+    },
+    
+];
+export default jobPostings
