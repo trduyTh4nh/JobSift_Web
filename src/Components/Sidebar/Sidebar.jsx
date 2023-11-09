@@ -16,34 +16,31 @@ const Sidebar = () => {
         <Link to='/accountSettings'><img className='image-user' src={profileImg} alt='avt' /></Link>
         <Link  >Steve </Link>
       </div>
-
-   
-
-        <div className='box-wrap'>
-          <div className='menu'>
-            <ul className='nav__list'>
-              {
-                navLinks.map((item, index) => (
-                  <li className='nav__item' key={index}>
-                    <NavLink to={item.path} className={navClass =>
-                      navClass.isActive ? "nav__active nav__link" : "nav__link"}>
-                      <span>
-                        <i>
-                          <img className='icon-sidebar' src={item.icon} alt="" />
-                        </i>
-                      </span>
-                      {item.display}
-                    </NavLink>
-                  </li>
-                ))
-              }
-            </ul>
-          </div>
-
-          <div className="sidebar__bottom">
-            <span><i><img className='logout-icon' src={logoutImg} alt="" /></i>Logout</span>
-          </div>
+      <div className='box-wrap'>
+        <div className='menu'>
+          <ul className='nav__list'>
+            {
+              navLinks.map((item, index) => (
+                <li className='nav__item' key={index}>
+                  <NavLink to={item.path} className={navClass =>
+                    navClass.isActive ? "nav__active nav__link" : "nav__link"}>
+                    <span>
+                      <i>
+                        <img className='icon-sidebar' src={item.icon} alt="" />
+                      </i>
+                    </span>
+                    {item.display}
+                  </NavLink>
+                </li>
+              ))
+            }
+          </ul>
         </div>
+
+        <div className="sidebar__bottom">
+          <span><i><img className='logout-icon' src={logoutImg} alt="" /></i>Logout</span>
+        </div>
+      </div>
 
 
     </div>
