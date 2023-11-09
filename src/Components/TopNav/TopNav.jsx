@@ -83,7 +83,7 @@ const TopNav = () => {
             <div className='wrap-option'>
               <a className='top__nav-link'>
                 <Link to="home" >
-                  <Home />
+                  Home
                 </Link>
               </a>
             </div>
@@ -92,7 +92,7 @@ const TopNav = () => {
             <div className='wrap-option'>
               <a className='top__nav-link'>
                 <Link to="chat">
-                  <Chat />
+                  Chat
                 </Link>
               </a>
             </div>
@@ -101,7 +101,7 @@ const TopNav = () => {
             <div className='wrap-option'>
               <a className='top__nav-link'>
                 <Link to="contact">
-                  <Contact />
+                  Contact
                 </Link>
               </a>
             </div>
@@ -109,7 +109,7 @@ const TopNav = () => {
             <div className='wrap-option'>
               <a className='top__nav-link'>
                 <Link to="aboutMe">
-                  <AboutMe />
+                  About Us
                 </Link>
               </a>
             </div>
