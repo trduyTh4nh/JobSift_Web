@@ -10,7 +10,15 @@
   --btn-bg-input: #F1F1F1;
   --text-color-secondary: #909090;
   --text-color-third: #707070;
+
+  /* transition */
+  --tran-02: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease;
+
 }
+
 *{
   padding: 0;
   margin: 0;
@@ -1224,6 +1232,50 @@ body.active_modal{
 
 
 /* My Wallet */
+
+
+/* Home */
+
+.titel_home {
+  padding: 12% 60px;    
+}
+.content_home {
+display: flex;
+flex-wrap: wrap;
+}
+.img_home_second{
+  position: absolute;
+  bottom: 0;
+  right: 20px;
+  height: 500px;
+
+  /* @media screen and (max-width: 900px) {
+    position: none;
+    
+  } */
+}
+@media screen and (max-width: 1280px) {
+  .img_home_second {
+    position: initial; /* hoặc position: static; */
+    right: initial;
+    bottom: initial;
+  }
+}
+
+/* About us */
+.titel_about {
+  display: flex;
+  margin-top: 100px;
+}
+.sty_text{
+  display: block;
+  margin-top: 50px;
+  text-align: center;
+  width: 50%;
+  margin-left: 20%;
+  font-weight: bold;
+  font-size: 15px;
+}
 
 /* .main__layout-mini-MyWallet{
   padding: 97px 30px 15px 40px;
