@@ -12,11 +12,38 @@ import Chat from '../../Page/Chat';
 import Contact from '../../Page/Contact';
 import AboutMe from '../../Page/AboutMe';
 
+import ArrowDropDownFillIcon from 'remixicon-react/ArrowDropDownFillIcon'
 
+import IconMoney from 'remixicon-react/MoneyDollarCircleFillIcon'
+import ArrowLeft from 'remixicon-react/ArrowLeftCircleFillIcon'
+
+import axios from 'axios';
+import { API_URL } from '../../ipConfig';
 
 const TopNav = () => {
 
   const [modalPayment, setModal] = useState(false);
+
+  const [dataPost, setDataPost] = useState({})
+
+
+  const handleSubmitPost = async () => {
+    try {
+      setDataPost({
+        ...dataPost,
+        job_time: '08:00:00'
+      });
+      const response = await axios.post(`http://192.168.116.1:3001/addpost`, dataPost, {
+        headers: {
+          "Content-Type": 'application/json'
+        }
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   const toggleModal = () => {
     setModal(!modalPayment)
@@ -35,7 +62,6 @@ const TopNav = () => {
 
   win.addEventListener('scroll', function (event) {
     // Xử lý sự kiện cuộn ở đây
-
     if (win.scrollY > 40) {
       topNav[0].classList.add('top__nav-wrapper-blur')
     }
@@ -95,10 +121,8 @@ const TopNav = () => {
             <div className="search__box">
 
               <div className='edit__seach__box'>
-                <input className='seach__input' type="text" placeholder='Search or type' />
-                <button>
+                <input className='seach__input' type="text" placeholder='' />
                   <span><i><img className='icon__search' src={iconSearch} alt="" /></i></span>
-                </button>
               </div>
 
             </div>
@@ -111,7 +135,6 @@ const TopNav = () => {
 
             </div>
             <div className='top__nav-right-2'>
-
               <div className="nav-btn__post-job">
                 <button onClick={toggleModal} className='btn__post-job' >
                   <span className='text__btn__post'>Post a job</span>
@@ -125,65 +148,115 @@ const TopNav = () => {
       </div>
       {modalPayment && (
         <div className='modalPayment'>
-          <div onClick={toggleModal} className='overlay_payment'></div>
-          <div className='modal_content_payment_top'>
-            <div className='flew'>
-              <span>Post</span>
-              <button onClick={toggleModal}>
-                <img src={iconClose} alt="" />
-              </button>
-            </div>
-            <div className='post'>
-              <div className='post_left'>
-                <div className='detail_post'>
-                  <span>Title</span>
-                  <input type="text" placeholder='title post' />
-                </div>
-                <div className='detail_post'>
-                  <span>category</span>
-                  <select id="num">
-                    <option value="1">category 1</option>
-                    <option value="2">category 2</option>
-                    <option value="3">category 4</option>
-                    <option value="4">category 4</option>
-                  </select>
-                </div>
-                <div className='detail_post'>
-                  <span>Address</span>
-                  <input type="text" placeholder='address' />
-                </div>
-                <div className='detail_post'>
-                  <span>Salary</span>
-                  <div className='flex_post'>
-                    <span>VND</span>
-                    <input type="number" placeholder='0' />
-                    <span>-</span>
-                    <input type="number" placeholder='0' />
-                  </div>
-                </div>
-                <div className='detail_post'>
-                  <span>Position</span>
-                  <input type="text" placeholder='position' />
-                </div>
-                <div className='detail_post'>
-                  <span>Application Deadline</span>
-                  <input type="date" placeholder='Choose' />
-                </div>
-              </div>
+          <div onClick={toggleModal} className='overlay_payment'>
 
-              <div className='post_right'>
-                <div className='detail_post'>
-                    <span>Description</span>
-                    <input type="text" placeholder='description' />
+
+          </div>
+          <div className='popup-container'>
+            <div className='modal_content_payment_top'>
+              <div className='flew'>
+                <div className='title-popup'>
+                  <span>Post</span>
                 </div>
-                <button className='post_modal' onClick={toggleModal} >
-                  Post
-                  <img src={lineMore} alt="" />
+                <button onClick={toggleModal}>
+                  <img src={iconClose} alt="" />
                 </button>
               </div>
-            </div>
-            
+              <div className='post'>
+                <div className='post_left'>
+                  <div className='detail_post'>
+                    <span>Title</span>
+                    <input className='input-post' onChange={(text) => {
+                      setDataPost({
+                        ...dataPost,
+                        tieu_de: text.target.value
+                      })
+                    }} type="text" placeholder='' />
+                  </div>
+                  <div className='detail_post'>
+                    <span>Category</span>
+                    <select id="num" onChange={(text) => {
+                      setDataPost({
+                        ...dataPost,
+                        job_category: text.target.value
+                      })
+                    }}>
+                      <option value="Part-time">Part-time</option>
+                      <option value="Full-time">Full-time</option>
+                      <option value="Remote">Remote</option>
+                    </select>
+                  </div>
+                  <div className='detail_post'>
+                    <span>Address</span>
+                    <input className='input-post' type="text" placeholder='' onChange={(text) => {
+                      setDataPost({
+                        ...dataPost,
+                        dia_chi: text.target.value
+                      })
+                    }} />
+                  </div>
+                  <div className='detail_post'>
+                    <span>Salary</span>
+                    <div className='flex_post'>
+                      <input className='input-post' onChange={(text) => {
+                        setDataPost({
+                          ...dataPost,
+                          luong: text.target.value
+                        })
+                      }} type="number" placeholder='' />
+                      <span>-</span>
+                      <input className='input-post' onChange={(text) => {
+                        setDataPost({
+                          ...dataPost,
+                          priceTo: text.target.value
+                        })
+                      }} type="number" placeholder='' />
+                      <span>VND</span>
 
+                    </div>
+                  </div>
+                  <div className='detail_post'>
+                    <span>Position</span>
+                    <input className='input-post' onChange={(text) => {
+                      setDataPost({
+                        ...dataPost,
+                        position: text.target.value
+                      })
+                    }} type="text" placeholder='' />
+                  </div>
+                  <div className='detail_post'>
+                    <span>Application Deadline</span>
+                    <input className='input-post'
+                      onChange={(text) => {
+                        setDataPost({
+                          ...dataPost,
+                          deadline: text.target.value
+                        })
+                      }}
+                      type="date" placeholder='' />
+                  </div>
+                </div>
+
+                <div className='post_right'>
+                  <div className='detail_post'>
+                    <span>Description</span>
+                    <input className='input-post descriptionInput'
+                      style={{ height: '200px', verticalAlign: 'text-top' }}
+                      onChange={(text) => {
+                        setDataPost({
+                          ...dataPost,
+                          note: text.target.value
+                        })
+                      }}
+                      type="text" placeholder='' />
+                  </div>
+                  <button className='post_modal' onClick={handleSubmitPost} >
+                    <p>Post</p>
+                    <img src={lineMore} alt="" />
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

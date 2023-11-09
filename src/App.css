@@ -891,9 +891,15 @@ body.active_modal{
   right: 0;
   bottom: 0;
   position: fixed;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
+
 .overlay_payment{
   background: rgba(79, 78, 78, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .modal_content_payment{
   margin-top: 50px;
@@ -914,24 +920,20 @@ body.active_modal{
   
 }
 .flew{
-  position: absolute;
-  top: 15px;
-  /* left: -5px; */
   width: 100%;
   display: flex;
-  align-items: flex-start;
-  /* justify-content: space-around; */
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 10px;
+  
 }
 .flew span{
-  position: absolute;
-  left: 10px;
-  font-size: 1.2rem;
-  font-weight: 600;
+
 }
 .flew img{
-  position: absolute;
-  right: 5px;
-  height: 20px;
+  height: 30px;
 }
 .modal_content_payment_2{
   padding: 0px 10px;
@@ -993,25 +995,51 @@ body.active_modal{
   display: grid;
   row-gap: 10px;
   position: absolute;
-  /* top: 20%;
-  left: 50%; */
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  line-height: 1.4;
   background-color: #ffffff;
-  padding: 14px 28px;
-  border-radius: 3px;
-  max-width: 700px;
-  min-width: 300px;
   border-radius: 20px;
+  padding: 28px;
+  width: 50%;
+  animation: popUp 0.4s ease 
+
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(0); /* Initial scale */
+  }
+  50% {
+    transform: scale(1.1); /* Slightly larger size */
+  }
+  100% {
+    transform: scale(1); /* Return to the original size */
+  }
+}
+
+@keyframes popUplo{
+  0% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+.popup-container{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .post_left{
   padding: 10px;
-  border-right: 1px solid var(--text-color-secondary);
   display: grid;
   row-gap: 15px;
+  flex: 1;
 }
 .detail_post{
   display: grid;
@@ -1040,26 +1068,31 @@ body.active_modal{
 
 .post_right{
   padding: 10px;
-  border-left: 1px solid var(--text-color-secondary);
+  flex: 1;
 }
 .post{
   display: flex;
-  margin-top: 30px;
+  gap: 10px;
 }
 
 .post_modal{
-  height: 30px;
   top: 10px;
   right: 10px;
   padding: 5px 7px;
   font-size: 0.9rem;
   background: var(--button-color);
-  border-radius: 15px;
+  border-radius: 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
+  margin-top: 20px;
   width: 100%;
+  padding: 20px;
+  transition: linear 0.2s ;
+}
+
+.post_modal:hover{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -20px;
 }
 .post_modal img{
   height: 20px;
@@ -1162,6 +1195,7 @@ body.active_modal{
   right: 0;
   bottom: 0;
   position: fixed;
+
 }
 .overlay_paymentSuccsess{
   background: rgba(79, 78, 78, 0.2);
@@ -1332,3 +1366,48 @@ flex-wrap: wrap;
 .body{
   position: absolute;
 } */
+
+.detail_post input{
+  padding: 16px;
+}
+
+.detail_post input[type='number']{
+  padding: 16px;
+  flex: 1;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.input-post .descriptionInput{
+  height: 200px; /* Đặt chiều cao */
+  font-size: 16px;
+  padding: 10px;
+  vertical-align: text-top; /* Để con trỏ chuột ở trên cùng */
+}
+
+
+.detail_post select{
+  padding: 16px;
+}
+.title-popup span{
+  font-size: 30px;
+  margin: 4px;
+  font-weight: 800;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#num{
+  padding-right: 20px;
+}
+.detail_post span{
+  font-weight: 700;
+  margin-left: 10;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.icon__notifi{
+  animation: popUplo 4s infinite 
+}
+.badge{
+  right: -2% !important;
+}
