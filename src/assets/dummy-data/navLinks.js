@@ -16,27 +16,27 @@ const navLinks = [
     {
       path: "/myProfile",
       icon: MyprofileImg,
-      display: "MyProfile",
+      display: "Hồ sơ",
     },
     {
       path: "/myCompany",
       icon: myCompanyImg,
-      display: "MyCompany",
+      display: "Công ty",
     },
     {
       path: "/listPost",
       icon: listPostImg,
-      display: "ListPost",
+      display: "Bài đăng",
     },
     {
       path: "/statistical",
       icon: statisticalImg,
-      display: "Statistical",
+      display: "Thống kê",
     },
     {
       path: "/accountSettings",
       icon: accountImg,
-      display: "Account Settings",
+      display: "Cài đặt",
     },
     // {
     //   path: "/myWallet",

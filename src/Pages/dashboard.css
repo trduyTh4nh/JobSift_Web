@@ -4,8 +4,9 @@ body {
    
 }
 .main__layout-mini{
-    
-   
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
 }
 
 
@@ -83,8 +84,8 @@ body {
 
 .dashboard__cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 270px);
-    column-gap: 1.8rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 16px;
 }
 
 
@@ -131,7 +132,7 @@ body {
 }
 
 .dashboard__wrapper-div {
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 .btn__div {
@@ -142,9 +143,9 @@ body {
 
 .dashboard__footer{
     height: auto;
+    margin-top: auto;
     /* padding-top: 100px; */
     /* background-color: aliceblue; */
-    margin-top: 100px;
     /* align-items: center;
     justify-content: center; */
     

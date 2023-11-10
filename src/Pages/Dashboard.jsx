@@ -72,6 +72,9 @@ const Dashboard = () => {
           <Link to = './diamondDashboard'><SingleCard item={card4Obj} /></Link>
         </div>
       </div>
+      <div className="identical__title">
+        <span>Hành động</span>
+      </div>
       <div className="dashboard__wrapper-div">
         <div className="dashboard__cards">
           {/* <button className='btn__div'>

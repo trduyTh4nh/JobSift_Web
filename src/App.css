@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
 :root{
   --primary-color: #F2F3C4;
   --secondary-color: #232323;
@@ -18,11 +20,18 @@
   --tran-05: all 0.5s ease;
 
 }
+
 @font-face {
   font-family: 'RubikLight';
   src: url('./assets/font/Rubik-Light.ttf') format('truetype');
 }
-
+h1{
+  font-family: 'Inter';
+  font-weight:bolder;
+}
+*{
+  font-family: 'Inter';
+}
 @font-face {
   font-family: 'RubikBold';
   src: url('./assets/font/Rubik-Bold.ttf') format('truetype');
@@ -60,7 +69,7 @@ a{
 
 /* Dashboard */
 .main__layout-mini {
-  padding: 57px 30px 0 30px;
+  padding: 57px 30px 30px 30px;
   height: 100%;
   border-bottom-left-radius: 50px;
   border-top-left-radius: 50px;
@@ -188,9 +197,9 @@ a{
 .profile__body-company{
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 25px;
   background: var(--btn-bg-input);
-  border-radius: 5px;
+  border-radius: 16px;
   gap: 20px;
 }
 
@@ -224,17 +233,20 @@ a{
   font-weight: 600;
 } */
 
-.profile__body-company-btnEdit button{
+.profile__body-company-btnEdit{
   height: 30px;
-  width: 70px;
+  width: auto;
   background: var(--button-color);
   border-radius: 30px;
+  padding: 16px;
   font-weight: 600;
   display: flex;
   column-gap: 10px;
 }
 
 .profile__btn-edit{
+  height: auto;
+  gap: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -408,9 +420,9 @@ a{
 .company__body{
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 25px;
   background: var(--btn-bg-input);
-  border-radius: 5px;
+  border-radius: 16px;
   gap: 20px;
 }
 
@@ -534,20 +546,22 @@ a{
 }
 
 .card__posted_main ul{
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 35px;
+  row-gap: 35px;
 }
 .card__posted_main li{
-  width: auto;
-  margin: 10px 0;
-  display: flex;
+  width: 100%;
+}
+.card__posted_main li a{
+  flex: 1
 }
 .cart__posted{
   background: var(--body-bg);
   border-radius: 20px;
   padding: 15px;
-  width: 500px;
+  width: 100%;
   row-gap: 15px;
   display: grid;
 }
