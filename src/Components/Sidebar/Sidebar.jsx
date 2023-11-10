@@ -6,20 +6,21 @@ import { Link } from 'react-router-dom';
 import profileImg from '../../assets/images/Image-60.svg';
 import logoutImg from '../../assets/images/logout.svg';
 import line from '../../assets/images/line.svg';
+import logo from '../../assets/icon/JS.svg'
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-        <h2>JOBSIFT</h2>
-        <div className='packageReponsive'>
-          <img className='imglineReponsive toggle' src={line} alt="" />
-        </div>
-        
+
+        <img src={logo} className='logoMain'></img>
+
       </div>
       <div className="profile">
-        <Link to='/accountSettings'><img className='image-user' src={profileImg} alt='avt' /></Link>
-        <Link  >Steve </Link>
+        <Link to='/accountSettings'>
+          <img className='image-user' src={profileImg} alt='avt' />
+        </Link>
+        <span>Steve </span>
       </div>
       <div className='box-wrap'>
         <div className='menu'>
@@ -34,7 +35,7 @@ const Sidebar = () => {
                         <img className='icon-sidebar' src={item.icon} alt="" />
                       </i>
                     </span>
-                    {item.display}
+                    <p>{item.display}</p>
                   </NavLink>
                 </li>
               ))

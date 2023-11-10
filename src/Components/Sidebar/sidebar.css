@@ -1,25 +1,42 @@
-.sidebar{
+@font-face {
+    font-family: 'RubikLight';
+    src: url('../../assets/font/Rubik-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'RubikBold';
+    src: url('../../assets/font/Rubik-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'RubikSemiBold';
+    src: url('../../assets/font/Rubik-SemiBold.ttf') format('truetype');
+}
+
+.sidebar {
     width: 260px;
     position: absolute;
     top: 0;
     left: 0;
     background: var(--body-bg);
-    padding:0px 30px;
+    padding: 0px 30px;
     height: 100%;
-    
+
 }
 
-.sidebar__top{
+.sidebar__top {
     width: 100%;
     height: 70px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
-.imglineReponsive{
+
+.imglineReponsive {
     height: 20px;
 }
-.packageReponsive{
+
+.packageReponsive {
     height: 35px;
     width: 35px;
     display: flex;
@@ -32,13 +49,13 @@
     position: absolute;
 }
 
-.sidebar__top h2{
+.sidebar__top h2 {
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
 }
 
-.sidebar__top h2 span{
+.sidebar__top h2 span {
     width: 30px;
     height: 30px;
     display: flex;
@@ -46,41 +63,41 @@
     justify-content: center;
 }
 
-.sidebar__top h2 i{
+.sidebar__top h2 i {
     font-weight: 400 !important;
     padding: 5px;
     font-size: 1.2rem;
 }
 
-.sidebar__content{
+.sidebar__content {
     display: flex;
     justify-content: space-between !important;
     flex-direction: column;
 }
-.box-wrap{
+
+.box-wrap {
     display: flex;
     justify-content: space-between !important;
     flex-direction: column;
     height: 70%;
 }
 
-.menu{
-    
-}
+.menu {}
 
-.sidebar__bottom{
+.sidebar__bottom {
     height: 0%;
 }
 
-.nav__link , 
-.sidebar__bottom span{
+.nav__link,
+.sidebar__bottom span {
     display: flex;
     align-items: center;
     column-gap: 10px;
     cursor: pointer;
+    transition: ease 0.2s;
 }
 
-.sidebar__bottom span{
+.sidebar__bottom span {
     color: var(--secondary-color);
     background: var(--button-color);
     font-weight: 600;
@@ -89,45 +106,83 @@
     border-radius: 10px;
 }
 
-.nav__list{
+.nav__list {
     display: flex;
-    row-gap: 1.7rem;
     flex-direction: column;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 18;
     font-weight: 600;
+    margin-top: 20px;
+    gap: 30px;
 }
-.nav__item span{
+
+nav__link .nav__item {
+    color: white;
+    padding: 15px !important;
+    transition: ease 0.4s !important;
+}
+
+.nav__item span {
     height: 20px;
     width: 20px;
 }
 
 
-.nav__link i{
+.nav__link i {
     color: var(--secondary-color);
     height: 20px;
     width: 20px;
 }
-.icon-sidebar{
+
+.icon-sidebar {
     height: 20px;
     width: 20px;
 }
-.nav__active{
-    color: white;
+
+.nav__active {
+    color: black;
     background: #E2F367;
     padding: 15px;
     border-radius: 10px;
+    transition: 0.3s ease;
+    
     /* border-radius: 30px 0 0 30px; */
 }
-.profile{
-    display:grid !important;
-    align-items:center;
+.nav__item p{
+    font-family: 'RubikSemiBold';
+}
+
+.nav__link:hover {
+    margin-left: 10px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
 }
-.image-user{
-    height: 60px;
+
+.profile span {
+    font-family: 'RubikBold', sans-serif;
+    font-size: 32px;
 }
-.logout-icon{
+
+.image-user {
+    height: 100px;
+    width: 100px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 100%;
+}
+
+.logout-icon {
     height: 25px;
     width: 25px;
+}
+
+.logoMain {
+    width: 80px;
+    height: 80px;
 }

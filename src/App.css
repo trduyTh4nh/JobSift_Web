@@ -18,6 +18,21 @@
   --tran-05: all 0.5s ease;
 
 }
+@font-face {
+  font-family: 'RubikLight';
+  src: url('./assets/font/Rubik-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RubikBold';
+  src: url('./assets/font/Rubik-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RubikSemiBold';
+  src: url('./assets/font/Rubik-SemiBold.ttf') format('truetype');
+}
+
 
 *{
   padding: 0;
@@ -1410,4 +1425,11 @@ flex-wrap: wrap;
 }
 .badge{
   right: -2% !important;
+}
+.title_home{
+  font-family: 'RubikSemiBold';
+}
+.descHome{
+  font-family: 'RubikSemiBold';
+
 }

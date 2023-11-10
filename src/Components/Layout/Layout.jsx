@@ -7,8 +7,7 @@ import './layout.css';
 const Layout = () => {
   return (
     <div className='layout'>
-      <Sidebar />
-
+      <Sidebar  />
       <div className='wrap-body'>
 
         <div className='main__layout'>

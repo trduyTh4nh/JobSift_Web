@@ -6,3 +6,11 @@
     display: flex;
     flex-direction: column;
 } */
+
+
+.layout{
+    display: flex;
+}
+.wrap-body {
+    flex: 1;
+}

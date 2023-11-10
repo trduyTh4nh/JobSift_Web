@@ -118,14 +118,6 @@ const TopNav = () => {
           </div>
 
           <div className='left-component'>
-            <div className="search__box">
-
-              <div className='edit__seach__box'>
-                <input className='seach__input' type="text" placeholder='' />
-                  <span><i><img className='icon__search' src={iconSearch} alt="" /></i></span>
-              </div>
-
-            </div>
             <div className="top__nav-right">
 
               <span className='notification'>
