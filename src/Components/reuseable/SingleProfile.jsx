@@ -42,32 +42,28 @@ const SingleProfile = (props) => {
         <div className="profile__header-avt">
           <img className='flexible-img-avt ' src={avt_user} alt="" />
           <span className="flexible-text">{fullname}</span>
-        </div>
-        <div className="profile__header-btn">
-          <button className='profile__btn-cancel'>Cancel</button>
-          <button className='profile__btn-save'>Save</button>
-        </div>
+        </div>  
       </div>
       <h3>Personal Information</h3>
       <div className="profile__body-face">
         <div className="profile__body-info-user">
           <span>Full name</span>
-          <input type="text" onChange={handleChangeTextFullName} value={textFullName} placeholder='Full name' />
+          <input disabled type="text" onChange={handleChangeTextFullName} value={textFullName} placeholder='Full name' />
         </div>
 
         <div className="profile__body-info-user">
           <span>Username</span>
-          <input type="text" onChange={handleChangeTextUserName} value={textUserName} placeholder='User name' />
+          <input disabled type="text" onChange={handleChangeTextUserName} value={textUserName} placeholder='User name' />
         </div>
 
         <div className="profile__body-info-user">
           <span>Password</span>
-          <input type="password" onChange={handleChangeTextPassword} value={textPassword} placeholder='Password' />
+          <input disabled type="password" onChange={handleChangeTextPassword} value={textPassword} placeholder='Password' />
         </div>
 
         <div className="profile__body-info-user">
           <span>Email</span>
-          <input type="text" onChange={handleChangeTextEmail} value={textEmail} placeholder='Email' />
+          <input disabled type="text" onChange={handleChangeTextEmail} value={textEmail} placeholder='Email' />
         </div>
 
       </div>
@@ -78,16 +74,14 @@ const SingleProfile = (props) => {
         <div className="profile__body-company-hearder">
           <div className="profile__body-company-title">
             <img className='flexible-img-logo' src={logo} alt="" />
-            <span className='flexible-text'>{name_comp}</span>
+            <h1 className='flexible-text'>{name_comp}</h1>
           </div>
 
           <div className="profile__body-company-btnEdit">
-            <button className='profile__btn-edit'>
-              <NavLink to="companybtnEdit">
-                Edit
+            <NavLink to="companybtnEdit" className='profile__btn-edit'>
+                <p>Edit</p>
                 <img src={LineImg} alt="" />
-              </NavLink>
-            </button>
+            </NavLink>
           </div>
         </div>
 

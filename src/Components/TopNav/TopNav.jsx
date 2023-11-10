@@ -83,7 +83,7 @@ const TopNav = () => {
             <div className='wrap-option'>
               <a className='top__nav-link'>
                 <Link to="home" >
-                  Home
+                  Trang chủ
                 </Link>
               </a>
             </div>
@@ -101,7 +101,7 @@ const TopNav = () => {
             <div className='wrap-option'>
               <a className='top__nav-link'>
                 <Link to="contact">
-                  Contact
+                  Liên hệ
                 </Link>
               </a>
             </div>
@@ -109,7 +109,7 @@ const TopNav = () => {
             <div className='wrap-option'>
               <a className='top__nav-link'>
                 <Link to="aboutMe">
-                  About Us
+                  Về chúng tôi
                 </Link>
               </a>
             </div>
@@ -129,7 +129,7 @@ const TopNav = () => {
             <div className='top__nav-right-2'>
               <div className="nav-btn__post-job">
                 <button onClick={toggleModal} className='btn__post-job' >
-                  <span className='text__btn__post'>Post a job</span>
+                  <span className='text__btn__post'>Đăng tải</span>
                 </button>
               </div>
 
