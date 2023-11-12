@@ -298,6 +298,9 @@ a{
   margin-top: 10px;
   font-weight: 600;
 }
+.item-time{
+  transition: linear 0.3s;
+}
 
 .profile__footer{
   display: flex;
@@ -1032,9 +1035,7 @@ body.active_modal{
   background-color: #ffffff;
   border-radius: 20px;
   padding: 28px;
-  width: 50%;
   animation: popUp 0.4s ease 
-
 }
 
 @keyframes popUp {
