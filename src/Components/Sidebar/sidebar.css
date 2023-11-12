@@ -14,6 +14,9 @@
 }
 
 .sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
     width: 260px;
     position: fixed;
     top: 0;
@@ -80,14 +83,12 @@
     display: flex;
     justify-content: space-between !important;
     flex-direction: column;
-    height: 70%;
+    height: 100%;
 }
 
 .menu {}
 
-.sidebar__bottom {
-    height: 0%;
-}
+
 
 .nav__link,
 .sidebar__bottom span {

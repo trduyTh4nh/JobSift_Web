@@ -12,9 +12,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-
         <img src={logo} className='logoMain'></img>
-
       </div>
       <div className="profile">
         <Link to='/accountSettings'>

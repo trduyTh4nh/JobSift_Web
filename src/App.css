@@ -266,7 +266,11 @@ a{
 
 .profile__body-company-info-item{
   display: flex;
+  align-items: center;
   column-gap: 5px;
+}
+.profile__body-company-info-item img{
+  height: 30px;
 }
 /* .profile__body-company-info-item img{
   height: 25px;
@@ -288,7 +292,7 @@ a{
 
 }
 .profile__body-company-info-content span{
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin-top: 20px;
 }
@@ -528,7 +532,7 @@ a{
 /* List Post */
 
 .main__layout-mini-ListPost{
-  padding: 97px 30px 15px 40px;
+  padding: 97px 40px 15px 40px;
   height: 100%;
   border-bottom-left-radius: 50px;
   border-top-left-radius: 50px;
@@ -550,14 +554,14 @@ a{
 
 .card__posted_main h3{
   font-size: 1.2rem;
-  margin: 10px 0;
+  margin: 25px 0;
 }
-
 .card__posted_main ul{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 35px;
-  row-gap: 35px;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 25px;
+  row-gap: 25px;
 }
 .card__posted_main li{
   width: 100%;
@@ -565,13 +569,21 @@ a{
 .card__posted_main li a{
   flex: 1
 }
+.cart__posted_top_wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
 .cart__posted{
   background: var(--body-bg);
   border-radius: 20px;
   padding: 15px;
   width: 100%;
   row-gap: 15px;
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
 }
 
 .cart__posted_top{
@@ -589,7 +601,7 @@ a{
   align-items: center;
 }
 .cart__posted_top-pack span{
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 .btn__posted_top-wrap{
@@ -648,6 +660,15 @@ a{
 
 
 /* Statistical */
+.statical__date{
+  position: relative;
+  display: flex;
+  gap: 15px;
+  z-index: 0
+}
+.statical__date li{
+  box-sizing: border-box;
+}
 
 .main__layout-mini-statistical{
   padding: 97px 30px 15px 40px;
@@ -665,7 +686,6 @@ a{
   padding: 15px 0;
 } 
 .main__layout-mini-statistical li a{
-
   text-decoration: none;
     box-shadow: 0 3px tomato;
     padding: 4px;
@@ -920,6 +940,9 @@ body.active_modal{
   margin: 100px auto 0;
   font-size: 18px;
 }
+.modalPayment{
+  z-index: 1;
+}
 .modalPayment, .overlay_payment{
   width: 100vw;
   height: 100vh;
@@ -1134,10 +1157,12 @@ body.active_modal{
 }
 
 /* Post detail */
-
+.apexcharts-toolbar{
+  display: none !important;
+}
 .post__detail{
   background: var(--body-bg);
-  padding: 15px 15px;
+  padding: 25px;
   border-radius: 15px;
   display: grid;
   row-gap: 15px;

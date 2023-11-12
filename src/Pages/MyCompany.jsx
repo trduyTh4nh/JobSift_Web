@@ -49,10 +49,8 @@ const MyCompany = () => {
       <h3 className='title-status'>Show status for : </h3>
 
       <nav>
-        <ul style={{ display: "flex", gap: 10 }}>
+        <ul style={{ display: "flex", gap: 10, position: 'relative', zIndex: 0 }}>
           <li className='item-time'><Link to="./component1">All Time</Link></li>
-          <li className='item-time'><Link to="./component2">This Year</Link></li>
-          <li className='item-time'><Link to="./component3">This Month</Link></li>
         </ul>
       </nav>
       <Outlet />
