@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import jobPostings from '../../assets/dummy-data/jobPostings';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams, useRoutes } from 'react-router-dom';
 import CheckLine from '../../assets/images/check-line.svg';
 import positionImg from '../../assets/images/company_hr.svg';
 import categoryImg from '../../assets/images/job__posted.svg';
@@ -10,11 +10,24 @@ import MapImg from '../../assets/images/map-line.svg';
 import Salary from '../../assets/images/money.svg';
 import Position2 from '../../assets/images/position2.svg';
 import Category2 from '../../assets/images/category2.svg';
+import axios from 'axios';
+import { API_URL } from '../../ipConfig';
 
 const PostDetail = (item) => {
+    const param = useParams()
     const { state } = useLocation();
     const { job } = state || {};
-
+    const [post, setPost] = useState()
+    useEffect(() => {
+        axios.post(`http://${API_URL}:3001/getpostby`, {
+            id_post: param.id
+        }).then(e => {
+            console.log(e.data.dataPost)
+            setPost(e.data.dataPost)
+        }).catch(e => {
+            console.error(e)
+        })
+    }, [])
     // const postId = item.params.id;
     // const {  }
     // console.log(postId)
@@ -30,13 +43,12 @@ const PostDetail = (item) => {
         <div className='main__layout-mini-ListPost'>
             <div className="identical__title">
                 <span>Post detail for : </span>
-                <span>{job.title}</span>
+                <span>{post ? post.tieu_de : ''}</span>
             </div>
             <div className='post__detail'>
                 <div className='post__detail_top'>
                     <div className='top_flex'>
-                        <img src={job.logo} alt="" />
-                        <span>{job.title}</span>
+                        <h3>{post ? post.tieu_de : ''}</h3>
                     </div>
                     <button className='btn__posted_top-wrap'>
                         Delete Post
@@ -85,13 +97,6 @@ const PostDetail = (item) => {
                 </div>
 
                 <div className="profile__body-company-info__post_detail_sec">
-                    <div className="profile__body-company-info-item">
-                        <img className='cart__posted_iconImg_2' src={Position2} alt="" />
-                        <div className="profile__body-company-info-content">
-                            <p>Position</p>
-                            <span>{job.position}</span>
-                        </div>
-                    </div>
                     <div className="profile__body-company-info-item">
                         <img className='cart__posted_iconImg_2' src={Category2} alt="" />
                         <div className="profile__body-company-info-content">

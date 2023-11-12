@@ -9,15 +9,15 @@ const Statistical = () => {
 
       <h3>Show status for : </h3>
 
-      <nav>
-        <ul>
+      <div>
+        <ul className='statical__date'>
           <li><Link to="./todayStatistical">Today</Link></li>
           <li><Link to="./thisWeekStatistical">This Week</Link></li>
           <li><Link to="./thisMonthStatistical">This Month</Link></li>
           <li><Link to="./thisYearStatistical">This Year</Link></li>
           <li><Link to="./allTimeStatistical">All Time</Link></li>
         </ul>
-      </nav>
+      </div>
       <Outlet/>
 
     </div>
