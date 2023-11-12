@@ -218,3 +218,128 @@ button {
 .post span {
     font-family: 'RubikBold' sans-serif;
 }
+
+.modal-content {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.close-buttonLogin {
+    font-size: 30px;
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+
+.close-buttonLogin :hover {
+    font-weight: 800;
+    color: #000;
+}
+
+.inputLogin input {
+    border: none;
+    outline: none;
+    flex: 1;
+    background-color: #F1F1F1;
+    width: 100%;
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 14px;
+    transition: linear 0.3s;
+    margin-bottom: 10px;
+}
+
+.inpuItem-cmp input{
+    border: none;
+    outline: none;
+    flex: 1;
+    background-color: #F1F1F1;
+    width: 100%;
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 14px;
+    transition: linear 0.3s;
+    margin-bottom: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-Login {
+    background-color: #E2F367;
+    width: 10rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: ease 0.3s;
+
+}
+
+.wrap-btnLogin {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1.4rem;
+    margin-left: -1rem;
+}
+
+.wrap-btnLogin button:hover {
+    opacity: 0.6;
+}
+
+.wrap-button {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.wrap-button-company {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.wrap-button-company button:hover {
+    opacity: 0.7;
+}
+
+.inputLogin label {
+    margin-top: 10px;
+
+}
+
+.wrap-company {
+    animation: slideInRight 0.5s ease-in-out;
+}
+
+
+@keyframes slideInRight {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.wrapInputFile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.wrapInputFile img{
+    border-radius: 10px;
+}
+
+.inputFile{
+    padding: 10px;
+    background-color: #E2F367;
+    width: 80%;
+    margin-top: 2px !important;
+    border-radius: 10px;
+}

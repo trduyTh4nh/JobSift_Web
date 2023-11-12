@@ -44,20 +44,20 @@ const SingleProfile = (props) => {
           <span className="flexible-text">{fullname}</span>
         </div>  
       </div>
-      <h3>Personal Information</h3>
+      <h3>Thông tin cá nhân</h3>
       <div className="profile__body-face">
         <div className="profile__body-info-user">
-          <span>Full name</span>
+          <span>Họ và tên</span>
           <input disabled type="text" onChange={handleChangeTextFullName} value={textFullName} placeholder='Full name' />
         </div>
 
         <div className="profile__body-info-user">
-          <span>Username</span>
+          <span>User</span>
           <input disabled type="text" onChange={handleChangeTextUserName} value={textUserName} placeholder='User name' />
         </div>
 
         <div className="profile__body-info-user">
-          <span>Password</span>
+          <span>Mật khẩu</span>
           <input disabled type="password" onChange={handleChangeTextPassword} value={textPassword} placeholder='Password' />
         </div>
 
@@ -68,7 +68,7 @@ const SingleProfile = (props) => {
 
       </div>
 
-      <h3>Company</h3>
+      <h3>Công ty</h3>
 
       <div className="profile__body-company">
         <div className="profile__body-company-hearder">
