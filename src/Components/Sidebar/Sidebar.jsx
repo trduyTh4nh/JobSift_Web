@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import navLinks from '../../assets/dummy-data/navLinks';
 import "./sidebar.css"
 import { Link } from 'react-router-dom';
@@ -9,10 +9,17 @@ import line from '../../assets/images/line.svg';
 import logo from '../../assets/icon/JS.svg'
 
 const Sidebar = () => {
-
+  const navigate = useNavigate()
    const user = JSON.parse(localStorage.getItem('user'))
 
    console.log(user)
+   const handleLogOut = () => {
+    if(window.confirm("Bạn có chắc là muốn đăng xuất?")){
+      localStorage.removeItem('user')
+      navigate('/home')
+      window.location.reload()
+    }
+   }
 
   return (
     <div className="sidebar">
@@ -48,7 +55,7 @@ const Sidebar = () => {
           </ul>
         </div>
 
-        <div className="sidebar__bottom">
+        <div onClick={handleLogOut} className="sidebar__bottom">
           <span><i><img className='logout-icon' src={logoutImg} alt="" /></i>Logout</span>
         </div>
       </div>

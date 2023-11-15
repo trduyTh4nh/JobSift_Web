@@ -5,7 +5,11 @@ import GGMap from '../assets/images/ggmap.svg';
 import IconBCT from '../assets/images/icon__cm.svg';
 
 import LogoCompanyImg from '../assets/images/logo_company.svg';
-
+import icon1Img from '../assets/images/icon1.svg';
+import icon2Img from '../assets/images/company_jobs.svg';
+import icon3Img from '../assets/images/company_hr.svg';
+import icon4Img from '../assets/images/company_appl.svg';
+import SingleCard from '../Components/reuseable/SingleCard';
 import { NavLink } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -46,14 +50,59 @@ const MyCompany = () => {
     }
   }, [])
 
-
+  const comp_card1_allTime = {
+    title: 'Followers',
+    totalNumber: '239k',
+    icon: icon1Img,
+  };
+  const comp_card2_allTime = {
+    title: 'Jobs',
+    totalNumber: '391',
+    icon: icon2Img,
+  };
+  const comp_card3_allTime = {
+    title: 'Position',
+    totalNumber: 'HR Manager',
+    icon: icon3Img,
+  };
+  const comp_card4_allTime = {
+    title: 'Application',
+    totalNumber: '31k',
+    icon: icon4Img,
+  };
+  const [dnStats, setDnStats] = useState()
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    axios.get(`http://${API_URL}:3001/enterprise/statistics/${user.id_dn}`).then(e => {
+      console.log(e.data)
+      setDnStats({
+        card1: {
+          title: 'Bài đăng',
+          totalNumber: e.data.count,
+          icon: icon2Img,
+        },
+        card2: {
+          title: 'Người theo dõi',
+          totalNumber: e.data.count_fl,
+          icon: icon1Img,
+        },
+        card3: {
+          title: 'Đơn ứng tuyển',
+          totalNumber: e.data.count_dut,
+          icon: icon1Img,
+        }
+      })
+    }).catch((e) => {
+      alert('error: ' + e)
+    })
+  }, [])
 
   return (
     <div className='main__layout-mini-myCompany'>
       <div className="company__header">
         <div className="company__header-face">
-          <img className='company__logo-main' src={Company.logo_comp} alt="" />
-          <span className='company__name-comp'>{Company.name_comp}</span>
+          <img className='company__logo-main' src={enterprise ? enterprise.logo_dn : ''} alt="" />
+          <span className='company__name-comp'>{enterprise ? enterprise.name_dn : ''}</span>
         </div>
 
         <NavLink to="companybtnEdit">
@@ -68,16 +117,25 @@ const MyCompany = () => {
         </NavLink>
       </div>
 
-      <h3 className='title-status'>Show status for : </h3>
+      <h3 className='title-status'>Hiển thị thông tin cho: </h3>
 
       <nav>
         <ul style={{ display: "flex", gap: 10, position: 'relative', zIndex: 0 }}>
           <li className='item-time'><Link to="./component1">All Time</Link></li>
         </ul>
       </nav>
-      <Outlet />
+      {
+        dnStats ? (
+          <div className="dashboard__cards">
+            <SingleCard item = {dnStats.card1}/>
+            <SingleCard item = {dnStats.card2}/>
+            <SingleCard item = {dnStats.card3}/>
+          </div>
+        ) : ''
+      }
+      
 
-      <h3>Company Information</h3>
+      <h3>Thông tin doanh nghiệp</h3>
 
       <div className="company__body">
         <div className="company__body-company-info">
@@ -85,33 +143,25 @@ const MyCompany = () => {
             <img className='flexible-img' src={EmailImg} alt="" />
             <div className="company__body-company-info-content">
               <p>Email</p>
-              <span>{Company.email_doanh_nghiep}</span>
+              <span>{enterprise ? enterprise.email_dn : ''}</span>
             </div>
           </div>
 
           <div className="company__body-company-info-item">
             <img className='flexible-img' src={MapImg} alt="" />
             <div className="company__body-company-info-content">
-              <p>Headquarters</p>
-              <span>{Company.dia_chi}</span>
-            </div>
-          </div>
-
-          <div className="company__body-company-info-item">
-            <img className='flexible-img' src={MapImg} alt="" />
-            <div className="company__body-company-info-content">
-              <p>Coordinates</p>
-              <span>{Company.toa_do}</span>
+              <p>Trụ sở</p>
+              <span>{enterprise ? enterprise.address : ''}</span>
             </div>
           </div>
         </div>
 
         <div className="company__body-company-description">
-          <span>Description</span>
-          <p>{Company.mo_ta}</p>
+          <span>Miêu tả</span>
+          <p>{enterprise ? enterprise.description == 'undefined' ? 'Không có miêu tả' : enterprise.description : ''}</p>
         </div>
         <div className="company__body-ggMap">
-          <iframe className='map-gg' src={enterprise?.cordiante || ''} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe height={100} className='map-gg' src={enterprise?.cordiante || ''} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
       <div className="company__footer">
