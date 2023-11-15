@@ -3,7 +3,7 @@ import iconClose from '../../assets/images/close-line.svg';
 import lineMore from '../../assets/images/line.svg';
 
 import './topNav.css'
-import { Link, redirect } from 'react-router-dom';
+import { Link, redirect, useRoutes } from 'react-router-dom';
 import iconSearch from '../../assets/images/iconSearch.svg';
 import iconNotifi from '../../assets/images/notifi.svg';
 
@@ -24,7 +24,6 @@ import { ref, uploadBytes, getDownloadURL, uploadBytesResumable } from 'firebase
 import Popup from '../PopUpMoDal';
 
 const TopNav = () => {
-
   const [modalPayment, setModal] = useState(false);
 
   const [modalLogin, setModalLogin] = useState(false)
@@ -51,7 +50,7 @@ const TopNav = () => {
 
   const [popupMessage, setPopupMessage] = useState('');
 
-
+  const user = JSON.parse(localStorage.getItem('user'))
 
   const closePopup = () => {
     setPopupOpen(false);
@@ -76,11 +75,13 @@ const TopNav = () => {
 
   const handleSubmitPost = async () => {
     try {
-      setDataPost({
+      const data = {
         ...dataPost,
-        job_time: '08:00:00'
-      });
-      const response = await axios.post(`http://${API_URL}:3001/addpost`, dataPost, {
+        job_time: '08:00:00',
+        id_user: user.id_ntd
+      }
+      console.log(data)
+      const response = await axios.post(`http://${API_URL}:3001/addpost`, data, {
         headers: {
           "Content-Type": 'application/json'
         }
@@ -684,7 +685,12 @@ const TopNav = () => {
                           priceTo: text.target.value
                         })
                       }} type="number" placeholder='' />
-                      <span>VND</span>
+                      <input className='input-post' onChange={(text) => {
+                        setDataPost({
+                          ...dataPost,
+                          currency: text.target.value
+                        })
+                      }} placeholder='Tiền tệ' />
 
                     </div>
                   </div>
