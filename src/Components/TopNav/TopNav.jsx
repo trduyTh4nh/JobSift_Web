@@ -74,6 +74,10 @@ const TopNav = () => {
 
 
   const handleSubmitPost = async () => {
+    const user = localStorage.getItem('user')
+
+    const idUser = JSON.parse(user).id_user;
+
     try {
       const data = {
         ...dataPost,
@@ -102,8 +106,6 @@ const TopNav = () => {
 
 
   const handleLogin = () => {
-
-
     axios.post(`http://${API_URL}:3001/loginntd`, formData, {
       headers: {
         'Content-Type': 'application/json'
@@ -119,6 +121,9 @@ const TopNav = () => {
         global.user = localStorage.getItem('user')
         setPopupMessage('Đăng nhập thành công!');
         setPopupOpen(true);
+
+        window.location.reload();
+
 
       })
       .catch((error) => {
@@ -167,17 +172,17 @@ const TopNav = () => {
               ...dataSignUp,
               imglogo_firebase: downloadURL
             })
-
             const FormDataSignup = {
               email: dataSignUp.email?.target?.value || '',
               emaildn: dataSignUp.emaildn?.target?.value || '',
-              imglogo_firebase: dataSignUp.imglogo_firebase || '',
+              imglogo_firebase: downloadURL || '',
               nameCompany: dataSignUp.nameCompany?.target?.value || '',
               password: dataSignUp.password?.target?.value || '',
               phone: dataSignUp.phone?.target?.value || '',
               username: dataSignUp.username?.target?.value || '',
               address: dataSignUp.address?.target?.value || '',
               cordinate: dataSignUp.cordinate?.target?.value || '',
+              description: dataSignUp.description?.target?.value || '',
             }
 
             axios.post(`http://${API_URL}:3001/signupntd`, FormDataSignup, {
@@ -187,14 +192,16 @@ const TopNav = () => {
             }).then((result) => {
               setPopupMessage('Đăng kí thành công!');
               setPopupOpen(true);
+              setModalSignup(false)
 
             }).catch((error) => {
-              alert("Email đã tồn tại")
+              alert("Email của bạn hoặc của doanh nghiệp đã tồn tại")
               console.error(error)
             })
 
             console.log('File available at', downloadURL);
           });
+
 
 
         }
@@ -533,6 +540,16 @@ const TopNav = () => {
                             })
                           }}></input>
                       </div>
+
+                      <div className='inpuItem-cmp desc-wrap'>
+                        <textarea type='text' placeholder='Description'
+                          onChange={(text) => {
+                            setDataSignUp({
+                              ...dataSignUp,
+                              description: text
+                            })
+                          }}></textarea>
+                      </div>
                     </div>
 
                     <div className='wrap-button-company'>
@@ -572,7 +589,7 @@ const TopNav = () => {
                     </div>
 
                     <div>
-                      <form onSubmit={(e) => e.preventDefault()}>
+                      <form>
                         <div style={{
                           display: "flex",
                           gap: 20,

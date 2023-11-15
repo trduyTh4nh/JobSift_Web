@@ -25,8 +25,20 @@
     padding: 0px 30px;
     padding-bottom: 30px;
     height: 100%;
-
+    transition: 0.3s ease;
+    animation: slideLeft 1s linear !important;
 }
+
+@keyframes slideLeft {
+    0% {
+      transform: translateX(-100);
+    }
+  
+    100% {
+      transform: translateX(100);
+    }
+  }
+  
 
 .sidebar__top {
     width: 100%;
@@ -189,4 +201,21 @@ nav__link .nav__item {
 .logoMain {
     width: 80px;
     height: 80px;
+}
+
+.desc-wrap textarea{
+    height: 120px !important;
+    border: none;
+    outline: none;
+    flex: 1 1;
+    background-color: #F1F1F1;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-left: 14px;
+    transition: linear 0.3s;
+    margin-bottom: 10px;
+    justify-content: center;
+    padding-top: 10px;
+
 }
