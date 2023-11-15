@@ -9,16 +9,23 @@ import line from '../../assets/images/line.svg';
 import logo from '../../assets/icon/JS.svg'
 
 const Sidebar = () => {
+
+   const user = JSON.parse(localStorage.getItem('user'))
+
+   console.log(user)
+
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-        <img src={logo} className='logoMain'></img>
+        <img src={logo} className='logoMain'>
+        </img>
+
       </div>
       <div className="profile">
         <Link to='/accountSettings'>
           <img className='image-user' src={profileImg} alt='avt' />
         </Link>
-        <span>Steve </span>
+        <span>{user ? user.full_name : "no data"}</span>
       </div>
       <div className='box-wrap'>
         <div className='menu'>

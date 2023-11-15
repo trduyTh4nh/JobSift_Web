@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LineImg from '../assets/images/line.svg';
 import GGMap from '../assets/images/ggmap.svg';
 import IconBCT from '../assets/images/icon__cm.svg';
@@ -12,6 +12,9 @@ import { Link } from 'react-router-dom';
 // import AllTime from '../Components/NestedRouter_comp/AllTime';
 // import ThisMonth from '../Components/NestedRouter_comp/ThisMonth';
 // import ThisYear from '../Components/NestedRouter_comp/ThisYear';
+
+import { API_URL } from '../ipConfig';
+import axios from 'axios';
 
 import EmailImg from '../assets/images/mail-line.svg';
 import MapImg from '../assets/images/map-line.svg';
@@ -26,6 +29,25 @@ const Company = {
 }
 
 const MyCompany = () => {
+  const [enterprise, setEnterprise] = useState()
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'))
+
+    if (user !== null) {
+      axios.post(`http://${API_URL}:3001/getdnofntd/${user.id_dn}`)
+        .then((respone) => {
+          setEnterprise(respone.data.enterprise)
+          console.log(respone.data.enterprise)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  }, [])
+
+
+
   return (
     <div className='main__layout-mini-myCompany'>
       <div className="company__header">
@@ -89,8 +111,7 @@ const MyCompany = () => {
           <p>{Company.mo_ta}</p>
         </div>
         <div className="company__body-ggMap">
-          <iframe className='map-gg' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.2900403237254!2d106.59805157577672!3d10.865530357542337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b088de30f3b%3A0xd2140740d360f705!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBOZ2_huqFpIG5n4buvIC0gVGluIGjhu41jIFRQLiBIQ00gKEhVRkxJVCkgLSBDxqEgc-G7nyBIw7NjIE3DtG4!5e0!3m2!1svi!2s!4v1699330860415!5m2!1svi!2s" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+          <iframe className='map-gg' src={enterprise?.cordiante || ''} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
       <div className="company__footer">

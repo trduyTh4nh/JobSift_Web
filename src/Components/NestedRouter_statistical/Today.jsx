@@ -17,11 +17,7 @@ const stastistical_card1_allTime = {
   totalNumber: '91',
   icon: iconActivity,
 };
-const stastistical_card2_allTime = {
-  title: 'Finacial',
-  totalNumber: '210 dia',
-  icon: iconFinacial,
-};
+
 
 
 
@@ -58,7 +54,6 @@ const Today = () => {
     <div>
       <div className='stastistical__cards'>
       <SingleCardForStatis item = {stastistical_card1_allTime}/>
-      <SingleCardForStatis item = {stastistical_card2_allTime}/>
       <SingleCardForStatis item = {stastistical_card3_allTime}/>
 
     </div>

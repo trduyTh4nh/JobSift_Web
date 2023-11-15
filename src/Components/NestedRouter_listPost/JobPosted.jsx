@@ -9,9 +9,12 @@ import lineMore from '../../assets/images/line_more.svg';
 import axios from 'axios';
 import { API_URL } from '../../ipConfig';
 const JobPosted = () => {
+
+  const user = JSON.parse(localStorage.getItem('user') ? localStorage.getItem('user') : '1')
+
   const [jobs, setJobs] = useState([])
   useEffect(() => {
-      axios.post(`http://${API_URL}:3001/post/1`).then(e => {
+      axios.post(`http://${API_URL}:3001/post/${user.id_user ? user.id_user : 1}`).then(e => {
           setJobs(e.data)
           console.log(e.data)
       })

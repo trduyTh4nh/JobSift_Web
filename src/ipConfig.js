@@ -1,7 +1,4 @@
-export const API_URL = "192.168.1.76"
-
-
-
+export const API_URL = "10.21.5.143"
 
 //192.168.1.41
 const IDHouseTP = "192.168.116.1"
