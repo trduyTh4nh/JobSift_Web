@@ -616,11 +616,12 @@ a {
 /* List Post */
 
 .main__layout-mini-ListPost {
-  padding: 97px 40px 15px 40px;
+  padding: 100px 40px 15px 40px !important;
   height: 100%;
   border-bottom-left-radius: 50px;
   border-top-left-radius: 50px;
   background: var(--primary-color);
+
 }
 
 /* .listPost__statistical{
