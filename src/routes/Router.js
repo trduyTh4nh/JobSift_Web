@@ -60,8 +60,8 @@ const Router = () => {
       <Route path='/listPost' element={<ListPost />}>
         <Route index element={<JobPosted />} />
         <Route path='jobPosted' element = {<JobPosted/>}/>
-        <Route path='jobPosted/application' element = {<Application/>}/>
-        <Route path='application' element = {<Application/>}/> 
+        <Route path='jobPosted/application/:id' element = {<Application/>}/>
+        <Route path='application/:id' element = {<Application/>}/> 
       </Route>
       <Route path='/listPost/postDetail/:id' element = {<PostDetail/>}/>
       <Route path='/statistical' element={<Statistical />}>

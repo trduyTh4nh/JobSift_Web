@@ -30,9 +30,9 @@ const Sidebar = () => {
       </div>
       <div className="profile">
         <Link to='/accountSettings'>
-          <img className='image-user' src={profileImg} alt='avt' />
+          <img className='image-user' src={user ? user.profile_picture ? user.profile_picture : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png'} alt='avt' />
         </Link>
-        <span>{user ? user.full_name : "no data"}</span>
+        <span>{user ? user.full_name : "Chưa đăng nhập"}</span>
       </div>
       <div className='box-wrap'>
         <div className='menu'>
@@ -56,7 +56,7 @@ const Sidebar = () => {
         </div>
 
         <div onClick={handleLogOut} className="sidebar__bottom">
-          <span><i><img className='logout-icon' src={logoutImg} alt="" /></i>Logout</span>
+          <span><i><img className='logout-icon' src={logoutImg} alt="" /></i>Đăng xuất</span>
         </div>
       </div>
 

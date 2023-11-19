@@ -36,12 +36,12 @@ const Company_Diamond = () => {
                     <img src={iconDiamond} alt="" />
                     <div className='diamond__header-div'>
                         <span>{diamond.diamond}</span>
-                        <span>diamond</span>
+                        <span>Kim cương</span>
                     </div>
                 </div>
                 <button className='gr__btn_diamond'>
                     <NavLink to="transactionHistory">
-                        See transaction history
+                        Xem lịch sử giao dịch
                         <img src={LineImg} alt="" />
                     </NavLink>
                 </button>

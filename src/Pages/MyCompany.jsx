@@ -107,23 +107,16 @@ const MyCompany = () => {
 
         <NavLink to="companybtnEdit">
           <button style={{
-            padding: 20
+            padding: 20,
+            display: "flex", alignItems: "center", justifyContent: "space-between" 
           }} className='gr__btn'>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <p>Edit Company</p>
+              <p>Chỉnh sửa</p>
               <img src={LineImg} alt="" />
-            </div>
           </button>
         </NavLink>
       </div>
 
       <h3 className='title-status'>Hiển thị thông tin cho: </h3>
-
-      <nav>
-        <ul style={{ display: "flex", gap: 10, position: 'relative', zIndex: 0 }}>
-          <li className='item-time'><Link to="./component1">All Time</Link></li>
-        </ul>
-      </nav>
       {
         dnStats ? (
           <div className="dashboard__cards">

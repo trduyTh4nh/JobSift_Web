@@ -14,14 +14,14 @@ const JobPosted = () => {
 
   const [jobs, setJobs] = useState([])
   useEffect(() => {
-      axios.post(`http://${API_URL}:3001/post/${user.id_user ? user.id_user : 1}`).then(e => {
+      axios.post(`http://${API_URL}:3001/post/${user.id_ntd ? user.id_ntd : 1}`).then(e => {
           setJobs(e.data)
           console.log(e.data)
       })
   }, [])
   return (
     <div className='card__posted_main'>
-      <h3>Show data for: Job Posted</h3>
+      <h3>Đang hiển thị dữ liệu cho: Đơn ứng tuyển</h3>
       <ul>
         {jobs.map((job) => (
           
@@ -34,22 +34,22 @@ const JobPosted = () => {
                       <img width={64} src={job.logo_dn} alt='Logo công ty' style={{objectFit: 'cover'}} />
                       <span>{job.tieu_de}</span>
                     </div>
-                    <button className='btn__posted_top-wrap'>Delete Post{'  >'}</button>
+                    <button className='btn__posted_top-wrap'>Xoá bài đăng{'  >'}</button>
                   </div>
                   <div className='cart__posted_body'>
                     <div className="profile__body-company-info">
                       <div className="profile__body-company-info-item">
                         <img className='cart__posted_iconImg' src={positionImg} alt="" />
                         <div className="profile__body-company-info-content">
-                          <p>Position</p>
-                          <span>{job.position}</span>
+                          <p>Vị trí</p>
+                          <span>{job.ten_vitri}</span>
                         </div>
                       </div>
 
                       <div className="profile__body-company-info-item">
                         <img className='cart__posted_iconImg' src={CheckLine} alt="" />
                         <div className="profile__body-company-info-content">
-                          <p>Application</p>
+                          <p>Lượng đơn ứng tuyển</p>
                           <span>{0}</span>
                         </div>
                       </div>
@@ -57,8 +57,8 @@ const JobPosted = () => {
                       <div className="profile__body-company-info-item">
                         <img className='cart__posted_iconImg' src={categoryImg} alt="" />
                         <div className="profile__body-company-info-content">
-                          <p>Category</p>
-                          <span>{'IT'}</span>
+                          <p>Ngành nghề</p>
+                          <span>{job.ten_loai}</span>
                         </div>
                       </div>
                     </div>
@@ -66,9 +66,9 @@ const JobPosted = () => {
                 </div>
 
                 <button className='cart__posted_end'>
-                  <Link to="application" className='between'>
+                  <Link to={"application/"+job.id_post} className='between'>
                     {/* <NavLink to = "application"> */}
-                    See Application
+                    Xem các lượt ứng tuyển
                     <img src={lineMore} alt="" />
                     {/* </NavLink> */}
                   </Link>

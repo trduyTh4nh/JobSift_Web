@@ -54,6 +54,7 @@ const TopNav = () => {
 
   const closePopup = () => {
     setPopupOpen(false);
+    window.location.reload()
   };
 
   const [formData, setFormData] = useState({
@@ -74,6 +75,18 @@ const TopNav = () => {
 
 
   const handleSubmitPost = async () => {
+    if(dataPost.luong > dataPost.priceTo){
+      alert('Tiền lương tối thiểu không thể lớn hơn tiền lương tối đa!')
+      return
+    }
+    if(new Date(dataPost.deadline) < new Date()){
+      alert('Ngày hết hạn phải sau ngày hiện tại')
+      return
+    }
+    if(!dataPost.tieu_de || !dataPost.nganh_nghe || !dataPost.dia_chi || !dataPost.luong || !dataPost.priceTo || !dataPost.currency || !dataPost.position || !dataPost.deadline){
+      alert('Vui lòng nhập đầy thông tin!')
+      return;
+    }
     const user = localStorage.getItem('user')
     console.log(user)
     const idUser = JSON.parse(user).id_ntd;
@@ -106,7 +119,7 @@ const TopNav = () => {
     }
   })
 
-
+  
   const handleLogin = () => {
     axios.post(`http://${API_URL}:3001/loginntd`, formData, {
       headers: {
@@ -114,18 +127,15 @@ const TopNav = () => {
       }
     })
       .then((response) => {
+        console.log('Commence đăng nhập')
         setModalLogin();
         setCheckUser(response.data.checkUser);
         setUserMain(response.data.user)
 
         console.log(response.data)
         localStorage.setItem('user', JSON.stringify(response.data.user))
-        global.user = localStorage.getItem('user')
         setPopupMessage('Đăng nhập thành công!');
         setPopupOpen(true);
-
-        window.location.reload();
-
 
       })
       .catch((error) => {
@@ -218,11 +228,27 @@ const TopNav = () => {
     }
 
   }
-
+  const [loaicv, setLoaicv] = useState([])
+  const [vitri, setVitri] = useState([])
   const toggleModal = () => {
     setModal(!modalPayment)
+    axios.post(`http://${API_URL}:3001/getallnn`).then(e => {
+      setLoaicv(e.data)
+      console.log(e.data)
+      axios.post(`http://${API_URL}:3001/getallposition`).then(e => {
+        setVitri(e.data.allPosition)
+        console.log(e.data.allPosition)
+      }).catch(e => {
+        alert(e)
+      }) 
+    }).catch(e => {
+      alert(e)
+    })
+    
   };
-
+  useEffect(() => {
+    console.log(loaicv)
+  }, loaicv)
 
   const toggleSignup = () => {
     setModalSignup(!modalSignup)
@@ -591,7 +617,6 @@ const TopNav = () => {
                     </div>
 
                     <div>
-                      <form>
                         <div style={{
                           display: "flex",
                           gap: 20,
@@ -627,9 +652,8 @@ const TopNav = () => {
                         </div>
 
                         <div className='wrap-btnLogin'>
-                          <button className='btn-Login' onClick={handleLogin} type="submit">Login</button>
+                          <button className='btn-Login' onClick={handleLogin}>Login</button>
                         </div>
-                      </form>
                     </div>
                   </div>
                 </div>
@@ -658,7 +682,7 @@ const TopNav = () => {
               <div className='post'>
                 <div className='post_left'>
                   <div className='detail_post'>
-                    <span>Tiêu đề</span>
+                    <span>Tiêu đề *</span>
                     <input className='input-post' onChange={(text) => {
                       setDataPost({
                         ...dataPost,
@@ -667,7 +691,7 @@ const TopNav = () => {
                     }} type="text" placeholder='' />
                   </div>
                   <div className='detail_post'>
-                    <span>Loại công việc</span>
+                    <span>Loại công việc *</span>
                     <select id="num" onChange={(text) => {
                       setDataPost({
                         ...dataPost,
@@ -680,7 +704,7 @@ const TopNav = () => {
                     </select>
                   </div>
                   <div className='detail_post'>
-                    <span>Địa chỉ</span>
+                    <span>Địa chỉ *</span>
                     <input className='input-post' type="text" placeholder='' onChange={(text) => {
                       setDataPost({
                         ...dataPost,
@@ -689,7 +713,7 @@ const TopNav = () => {
                     }} />
                   </div>
                   <div className='detail_post'>
-                    <span>Mức lương</span>
+                    <span>Mức lương *</span>
                     <div className='flex_post'>
                       <input className='input-post' onChange={(text) => {
                         setDataPost({
@@ -714,16 +738,22 @@ const TopNav = () => {
                     </div>
                   </div>
                   <div className='detail_post'>
-                    <span>Vị trí</span>
-                    <input className='input-post' onChange={(text) => {
+                    <span>Vị trí *</span>
+                    <select onChange={(e) => {
                       setDataPost({
                         ...dataPost,
-                        position: text.target.value
+                        position: e.target.value
                       })
-                    }} type="text" placeholder='' />
+                    }}>
+                      {
+                        vitri.map((e) => (
+                          <option value={e.id_vitri}>{e.ten_vitri}</option>
+                        ))
+                      }
+                    </select>
                   </div>
                   <div className='detail_post'>
-                    <span>Hạn nộp</span>
+                    <span>Hạn nộp *</span>
                     <input className='input-post'
                       onChange={(text) => {
                         setDataPost({
@@ -734,15 +764,19 @@ const TopNav = () => {
                       type="date" placeholder='' />
                   </div>
                   <div className='detail_post'>
-                    <span>Ngành nghề</span>
-                    <input className='input-post'
-                      onChange={(text) => {
-                        setDataPost({
-                          ...dataPost,
-                          nganh_nghe: text.target.value
-                        })
-                      }}
-                       placeholder='' />
+                    <span>Ngành nghề *</span>
+                    <select onChange={(e) => {
+                      setDataPost({
+                        ...dataPost,
+                        nganh_nghe: e.target.value
+                      })
+                    }}>
+                      {
+                        loaicv.map((e) => 
+                          (<option value={e.id_loai}>{e.ten_loai}</option>)
+                        )
+                      }
+                    </select>
                   </div>
                 </div>
 
@@ -770,6 +804,7 @@ const TopNav = () => {
                       }}
                       type="text" placeholder='' />
                   </div>
+                  <p style={{marginTop: '10px'}}>(*): Bắt buộc</p>
                   <button className='post_modal' onClick={handleSubmitPost} >
                     <p>Đăng tải</p>
                     <img src={lineMore} alt="" />
