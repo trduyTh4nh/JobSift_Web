@@ -274,8 +274,8 @@ a {
 
 .profile__body-company-info {
   display: flex;
-  justify-content: space-around;
-
+  flex-direction: column;
+  gap: 20px;
 }
 
 .profile__body-company-info-item {
@@ -314,7 +314,9 @@ a {
   font-weight: 600;
   margin-top: 20px;
 }
+.profile__body-company-description{
 
+}
 .profile__body-company-description span {
   color: var(--text-color-third);
   margin-top: 10px;
@@ -809,7 +811,10 @@ a {
   grid-template-columns: repeat(auto-fit, 270px);
   column-gap: 3.8rem;
 }
-
+.single__card:hover{
+  
+  background-color: #000 !important;
+}
 .single__card_statis {
   background-color: #3D3D3D;
   padding: 20px;
@@ -822,6 +827,7 @@ a {
   cursor: pointer;
   width: 300px;
 }
+
 
 .single__card_statis:hover {
   box-shadow: rgba(255, 255, 255, 0.2) 0px 7px 29px 0px;
