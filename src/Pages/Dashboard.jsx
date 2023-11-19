@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./dashboard.css";
 import { Link } from 'react-router-dom';
-
+import { API_URL } from '../ipConfig';
 import SingleCard from '../Components/reuseable/SingleCard';
 import DivCard from '../Components/reuseable/Divcard';
 import icon1Img from '../assets/images/icon1.svg';
@@ -18,6 +18,8 @@ import iconContact from '../assets/images/icon_contact.svg';
 import iconMess from '../assets/images/icon_mess.svg';
 import iconLocated from '../assets/images/icon_located.svg';
 import iconCM from '../assets/images/icon__cm.svg';
+import { useState } from 'react';
+import axios from 'axios';
 
 const card1Obj = {
   title: "Bài đăng",
@@ -58,7 +60,48 @@ const div4Obj = {
 }
 
 const Dashboard = () => {
-
+  const [dnStats, setDnStats] = useState({
+    card1: {
+      title: 'Bài đăng',
+      totalNumber: 0,
+      icon: icon1Img,
+    },
+    card2: {
+      title: 'Ứng tuyển',
+      totalNumber: 0,
+      icon: icon2Img,
+    },
+    card3: {
+      title: 'Đã duyệt',
+      totalNumber: 0,
+      icon: icon3Img,
+    }
+  })
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'))
+    axios.get(`http://${API_URL}:3001/enterprise/statistics/${user.id_dn}`).then(e => {
+      console.log(e.data)
+      setDnStats({
+        card1: {
+          title: 'Bài đăng',
+          totalNumber: e.data.count,
+          icon: icon1Img,
+        },
+        card2: {
+          title: 'Ứng tuyển',
+          totalNumber: e.data.count_dut,
+          icon: icon2Img,
+        },
+        card3: {
+          title: 'Đã duyệt',
+          totalNumber: e.data.count_approval,
+          icon: icon3Img,
+        },
+      })
+    }).catch((e) => {
+      alert('error: ' + e)
+    })
+  }, [])
   return (
     <div className='main__layout-mini'>
       <div className="identical__title">
@@ -66,9 +109,9 @@ const Dashboard = () => {
       </div>
       <div className="dashboard__wrapper">
         <div className="dashboard__cards">
-          <SingleCard item={card1Obj} />
-          <SingleCard item={card2Obj} />
-          <SingleCard item={card3Obj} />
+          <SingleCard item={dnStats.card1} />
+          <SingleCard item={dnStats.card2} />
+          <SingleCard item={dnStats.card3} />
           <Link to = './diamondDashboard'><SingleCard item={card4Obj} /></Link>
         </div>
       </div>

@@ -37,8 +37,18 @@ import PostDetail from '../Components/NestedRouter_listPost/PostDetail';
 
 import CompanybtnEdit from '../Components/NestedRouter_comp/CompanybtnEdit';
 
+// admin
+import DashboardAdmin from '../Page1/Dashboard';
+import HomeAdmin from '../Page1/HomeAdmin';
+import Manage from '../Page1/Manage';
 
-
+// Account Setting nest Router
+import TodayStatisticalAdmin from '../Components/NestedRouter_dashboard_admin/NganhNghe';
+import ThisWeekStatisticalAdmin from '../Components/NestedRouter_dashboard_admin/ViTri';
+import ThisMonthStatisticalAdmin from '../Components/NestedRouter_dashboard_admin/TaiChinh';
+import ThisYearStatisticalAdmin from '../Components/NestedRouter_dashboard_admin/ThisYear';
+import AllTimeStatisticalAdmin from '../Components/NestedRouter_dashboard_admin/AllTime';
+import ReportDetail from '../Components/reuseableAdmin/ReportDetail';
 
 const Router = () => {
   return (
@@ -60,8 +70,8 @@ const Router = () => {
       <Route path='/listPost' element={<ListPost />}>
         <Route index element={<JobPosted />} />
         <Route path='jobPosted' element = {<JobPosted/>}/>
-        <Route path='jobPosted/application' element = {<Application/>}/>
-        <Route path='application' element = {<Application/>}/> 
+        <Route path='jobPosted/application/:id' element = {<Application/>}/>
+        <Route path='application/:id' element = {<Application/>}/> 
       </Route>
       <Route path='/listPost/postDetail/:id' element = {<PostDetail/>}/>
       <Route path='/statistical' element={<Statistical />}>
@@ -74,7 +84,22 @@ const Router = () => {
       </Route>
       <Route path='/accountSettings' element={<AccountSettings />}/>
       {/* <Route path='/myWallet' element={<MyWallet />} /> */}
-
+      <Route path='/dashboardadmin' element={<DashboardAdmin />}>
+        <Route index element={<TodayStatisticalAdmin />} />
+        <Route path='nganhngheStatistical' element={<TodayStatisticalAdmin />} />
+        <Route path='vitriStatistical' element={<ThisWeekStatisticalAdmin />} />
+        <Route path='taichinhStatistical' element={<ThisMonthStatisticalAdmin />} />
+        <Route path='thisYearStatistical' element={<ThisYearStatisticalAdmin />} />
+        <Route path='allTimeStatistical' element={<AllTimeStatisticalAdmin />} />
+      </Route>
+      <Route path='/homeAdmin' element={<HomeAdmin />} />
+      <Route path='/manage' element={<Manage />}>
+        <Route index element={<JobPosted />} />
+        <Route path='jobPosted' element={<JobPosted />} />
+        <Route path='jobPosted/reports/:id' element={<Application />} />
+      </Route>
+      <Route path='/manage/reportDetail/:id' element={<ReportDetail />} />
+      <Route path='/manage/PostDetail/:id' element={<PostDetail />} />
       <Route path='home' element = {<Home/>}/>
       <Route path='chat' element = {<Chat/>}/>
       <Route path='contact' element = {<Contact/>}/>

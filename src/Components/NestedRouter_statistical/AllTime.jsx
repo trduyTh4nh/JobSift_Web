@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import iconActivity from '../../assets/images/statis_activity.svg';
+import iconActivity from '../../assets/images/post__appl.svg';
 import iconFinacial from '../../assets/images/statis_finacial.svg';
 import iconJob from '../../assets/images/statis_job.svg';
 import Chart from "react-apexcharts";
@@ -8,12 +8,12 @@ import SingleCardForStatis from '../reuseable/SingleCardForStatis';
 
 
 const stastistical_card3_allTime = {
-  title: 'Job recruitment',
+  title: 'Bài đăng',
   totalNumber: '35',
   icon: iconJob,
 };
 const stastistical_card1_allTime = {
-  title: 'Application',
+  title: 'Lượt ứng tuyển',
   totalNumber: '546',
   icon: iconActivity,
 };
@@ -28,7 +28,7 @@ const AllTime = () => {
         id: "basic-bar"
       },
       xaxis: {
-        categories: ['Job recruitment', 'Application', 'Finacial']
+        categories: ['Bài đăng', 'Đơn ứng tuyển', 'Tài chính']
       }
     },
     series: [

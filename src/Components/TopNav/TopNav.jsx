@@ -47,13 +47,19 @@ const TopNav = () => {
   const [userMain, setUserMain] = useState()
 
   const [isPopupOpen, setPopupOpen] = useState(false);
-
+  const [validState, setValidState] = useState({
+    email: true,
+    password: true,
+    repassword: true,
+    phone: true,
+  })
   const [popupMessage, setPopupMessage] = useState('');
 
   const user = JSON.parse(localStorage.getItem('user'))
 
   const closePopup = () => {
     setPopupOpen(false);
+    window.location.reload()
   };
 
   const [formData, setFormData] = useState({
@@ -74,6 +80,18 @@ const TopNav = () => {
 
 
   const handleSubmitPost = async () => {
+    if(dataPost.luong > dataPost.priceTo){
+      alert('Tiền lương tối thiểu không thể lớn hơn tiền lương tối đa!')
+      return
+    }
+    if(new Date(dataPost.deadline) < new Date()){
+      alert('Ngày hết hạn phải sau ngày hiện tại')
+      return
+    }
+    if(!dataPost.tieu_de || !dataPost.nganh_nghe || !dataPost.dia_chi || !dataPost.luong || !dataPost.priceTo || !dataPost.currency || !dataPost.position || !dataPost.deadline){
+      alert('Vui lòng nhập đầy thông tin!')
+      return;
+    }
     const user = localStorage.getItem('user')
     console.log(user)
     const idUser = JSON.parse(user).id_ntd;
@@ -106,7 +124,7 @@ const TopNav = () => {
     }
   })
 
-
+  
   const handleLogin = () => {
     axios.post(`http://${API_URL}:3001/loginntd`, formData, {
       headers: {
@@ -114,13 +132,13 @@ const TopNav = () => {
       }
     })
       .then((response) => {
+        console.log('Commence đăng nhập')
         setModalLogin();
         setCheckUser(response.data.checkUser);
         setUserMain(response.data.user)
 
         console.log(response.data)
         localStorage.setItem('user', JSON.stringify(response.data.user))
-        global.user = localStorage.getItem('user')
         setPopupMessage('Đăng nhập thành công!');
         setPopupOpen(true);
         window.location.reload();
@@ -215,11 +233,27 @@ const TopNav = () => {
     }
 
   }
-
+  const [loaicv, setLoaicv] = useState([])
+  const [vitri, setVitri] = useState([])
   const toggleModal = () => {
     setModal(!modalPayment)
+    axios.post(`http://${API_URL}:3001/getallnn`).then(e => {
+      setLoaicv(e.data)
+      console.log(e.data)
+      axios.post(`http://${API_URL}:3001/getallposition`).then(e => {
+        setVitri(e.data.allPosition)
+        console.log(e.data.allPosition)
+      }).catch(e => {
+        alert(e)
+      }) 
+    }).catch(e => {
+      alert(e)
+    })
+    
   };
-
+  useEffect(() => {
+    console.log(loaicv)
+  }, loaicv)
 
   const toggleSignup = () => {
     setModalSignup(!modalSignup)
@@ -392,6 +426,7 @@ const TopNav = () => {
                     <div className='inputLogin'>
                       <label style={{ marginRight: 10, marginTop: 10 }} htmlFor="email">Email: </label>
                       <input
+                        style={{border: validState.email ? 'none' : '2px rgb(255 139 139) solid'}}
                         type="email"
                         id="email"
                         name="email"
@@ -424,6 +459,7 @@ const TopNav = () => {
                     <div className='inputLogin'>
                       <label style={{ marginRight: 10, marginTop: 10 }} htmlFor="phone">Số điện thoại: </label>
                       <input
+                        style={{border: validState.phone ? 'none' : '2px rgb(255 139 139) solid'}}
                         type="text"
                         id="phone"
                         name="phone"
@@ -440,6 +476,7 @@ const TopNav = () => {
                     <div className='inputLogin'>
                       <label style={{ marginRight: 10, marginTop: 10 }} htmlFor="password">Mật khẩu: </label>
                       <input
+                        style={{border: validState.password ? 'none' : '2px rgb(255 139 139) solid'}}
                         type="password"
                         id="password"
                         name="password"
@@ -457,6 +494,7 @@ const TopNav = () => {
                     <div className='inputLogin'>
                       <label style={{ marginRight: 10, marginTop: 10 }} htmlFor="password">Nhập lại mật khẩu: </label>
                       <input
+                        style={{border: validState.repassword ? 'none' : '2px rgb(255 139 139) solid'}}
                         type="password"
                         id="password"
                         name="password"
@@ -469,16 +507,52 @@ const TopNav = () => {
                         }}
                       />
                     </div>
-
+                    {
+                      (!validState.email && !validState.password && !validState.repassword && !validState.phone) ? (
+                        <p style={{fontWeight: 'bold', color: 'rgb(255 139 139)'}}>Vui lòng nhập đầy đủ thông tin!</p>
+                      ) : ''
+                    }
                     <div className='wrap-button'>
                       <button
                         className='btn-Login'
                         onClick={() => {
+                          if(!dataSignUp.email || !dataSignUp.password || !dataSignUp.repassword || !dataSignUp.phone){
+                            setValidState({
+                              email: dataSignUp.email,
+                              password: dataSignUp.password,
+                              repassword: dataSignUp.repassword,
+                              phone: dataSignUp.phone
+                            })
+                            
+                          }
+                          if(!dataSignUp.phone||dataSignUp.phone.target.value.length > 10 || dataSignUp.phone.target.value.length < 10){
+                            setValidState({
+                                ...validState,
+                                phone: false
+                            })
+                            return
+                          }
+                          if(!dataSignUp.email||!dataSignUp.email.target.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)){
+                            setValidState({
+                              ...validState,
+                              email: false
+                            })
+                            return
+                          }
+                          if(!dataSignUp.password||!dataSignUp.password.target.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)){
+                            setValidState({
+                              ...validState,
+                              password: false
+                            })
+                            return
+                          }
                           if (dataSignUp.password.target.value === dataSignUp.repassword.target.value) {
                             setIsToggleToSignup(false);
                           } else {
-                            console.log(dataSignUp.password, dataSignUp.repassword);
-                            alert("Password không khớp!");
+                            setValidState({
+                              ...validState,
+                              repassword: false
+                            })
                           }
                         }}
                       >
@@ -588,7 +662,6 @@ const TopNav = () => {
                     </div>
 
                     <div>
-                      <form>
                         <div style={{
                           display: "flex",
                           gap: 20,
@@ -624,9 +697,8 @@ const TopNav = () => {
                         </div>
 
                         <div className='wrap-btnLogin'>
-                          <button className='btn-Login' onClick={handleLogin} type="submit">Login</button>
+                          <button className='btn-Login' onClick={handleLogin}>Login</button>
                         </div>
-                      </form>
                     </div>
                   </div>
                 </div>
@@ -655,7 +727,7 @@ const TopNav = () => {
               <div className='post'>
                 <div className='post_left'>
                   <div className='detail_post'>
-                    <span>Tiêu đề</span>
+                    <span>Tiêu đề *</span>
                     <input className='input-post' onChange={(text) => {
                       setDataPost({
                         ...dataPost,
@@ -664,7 +736,7 @@ const TopNav = () => {
                     }} type="text" placeholder='' />
                   </div>
                   <div className='detail_post'>
-                    <span>Loại công việc</span>
+                    <span>Loại công việc *</span>
                     <select id="num" onChange={(text) => {
                       setDataPost({
                         ...dataPost,
@@ -677,7 +749,7 @@ const TopNav = () => {
                     </select>
                   </div>
                   <div className='detail_post'>
-                    <span>Địa chỉ</span>
+                    <span>Địa chỉ *</span>
                     <input className='input-post' type="text" placeholder='' onChange={(text) => {
                       setDataPost({
                         ...dataPost,
@@ -686,7 +758,7 @@ const TopNav = () => {
                     }} />
                   </div>
                   <div className='detail_post'>
-                    <span>Mức lương</span>
+                    <span>Mức lương *</span>
                     <div className='flex_post'>
                       <input className='input-post' onChange={(text) => {
                         setDataPost({
@@ -711,16 +783,22 @@ const TopNav = () => {
                     </div>
                   </div>
                   <div className='detail_post'>
-                    <span>Vị trí</span>
-                    <input className='input-post' onChange={(text) => {
+                    <span>Vị trí *</span>
+                    <select onChange={(e) => {
                       setDataPost({
                         ...dataPost,
-                        position: text.target.value
+                        position: e.target.value
                       })
-                    }} type="text" placeholder='' />
+                    }}>
+                      {
+                        vitri.map((e) => (
+                          <option value={e.id_vitri}>{e.ten_vitri}</option>
+                        ))
+                      }
+                    </select>
                   </div>
                   <div className='detail_post'>
-                    <span>Hạn nộp</span>
+                    <span>Hạn nộp *</span>
                     <input className='input-post'
                       onChange={(text) => {
                         setDataPost({
@@ -731,15 +809,19 @@ const TopNav = () => {
                       type="date" placeholder='' />
                   </div>
                   <div className='detail_post'>
-                    <span>Ngành nghề</span>
-                    <input className='input-post'
-                      onChange={(text) => {
-                        setDataPost({
-                          ...dataPost,
-                          nganh_nghe: text.target.value
-                        })
-                      }}
-                       placeholder='' />
+                    <span>Ngành nghề *</span>
+                    <select onChange={(e) => {
+                      setDataPost({
+                        ...dataPost,
+                        nganh_nghe: e.target.value
+                      })
+                    }}>
+                      {
+                        loaicv.map((e) => 
+                          (<option value={e.id_loai}>{e.ten_loai}</option>)
+                        )
+                      }
+                    </select>
                   </div>
                 </div>
 
@@ -767,6 +849,7 @@ const TopNav = () => {
                       }}
                       type="text" placeholder='' />
                   </div>
+                  <p style={{marginTop: '10px'}}>(*): Bắt buộc</p>
                   <button className='post_modal' onClick={handleSubmitPost} >
                     <p>Đăng tải</p>
                     <img src={lineMore} alt="" />

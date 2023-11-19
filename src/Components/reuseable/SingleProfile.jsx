@@ -62,7 +62,7 @@ const SingleProfile = (props) => {
 
       <div className="profile__header-face">
         <div className="profile__header-avt">
-          <img className='flexible-img-avt ' src={avt_user} alt="" />
+          <img className='flexible-img-avt ' src={user ? user.profile_picture ? user.profile_picture : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png'} alt="" />
           <span className="flexible-text">{user ? user.full_name : ""}</span>
         </div>
       </div>
@@ -73,10 +73,7 @@ const SingleProfile = (props) => {
           <input disabled type="text" value={user ? user.full_name : ""} onChange={handleChangeTextFullName} placeholder='Full name' />
         </div>
 
-        <div className="profile__body-info-user">
-          <span>User</span>
-          <input disabled type="text" value={user ? user.full_name : ""} onChange={handleChangeTextUserName} placeholder='User name' />
-        </div>
+       
 
         <div className="profile__body-info-user">
           <span>Email</span>
@@ -96,7 +93,7 @@ const SingleProfile = (props) => {
 
           <div className="profile__body-company-btnEdit">
             <NavLink to="companybtnEdit" className='profile__btn-edit'>
-              <p>Edit</p>
+              <p>Chỉnh sửa</p>
               <img src={LineImg} alt="" />
             </NavLink>
           </div>
@@ -111,15 +108,6 @@ const SingleProfile = (props) => {
             </div>
           </div>
 
-          <div className="profile__body-company-info-item">
-            <img className='flexible-img' src={MapImg} alt="" />
-            <div className="profile__body-company-info-content">
-              <p>Headquarters</p>
-              <span>{enterprise ? enterprise.address : ''}</span>
-            </div>
-          </div>
-
-        </div>
 
         <div className="profile__body-company-info-item">
           <img className='flexible-img' src={MapImg} alt="" />
@@ -135,7 +123,6 @@ const SingleProfile = (props) => {
               color: '#000'
             }}>{enterprise ? enterprise.description : ''}</p>
           </div>
-
         </div>
       </div>
 

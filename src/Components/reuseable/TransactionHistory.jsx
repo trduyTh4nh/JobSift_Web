@@ -5,7 +5,7 @@ import DiamondImg from '../../assets/images/icon_diamond.svg';
 const TransactionHistory = () => {
     return (
         <div className='main__layout-mini-transactionHistory'>
-            <h1>Transaction History</h1>
+            <h1>Lịch sử giao dịch</h1>
             <ul>
                 {transactionHistory.map((transaction, index) => (
                     <li key={index}>
@@ -17,16 +17,16 @@ const TransactionHistory = () => {
                                 <div class="profile__body-company-info_item_transaction">
                                     <img src={DiamondImg} alt="" />
                                     <div className="company__body-company-info-content">
-                                        <p>Amount of Diamond</p>
+                                        <p>Lượng kim cương</p>
                                         <span>{transaction.amountOfDiamond}</span>
                                     </div>
                                 </div>
                                 <div className="company__body-company-info-content">
-                                    <p>Money spent</p>
+                                    <p>Lượng tiền đã chi tiêu</p>
                                     <span>{transaction.moneySpent}</span>
                                 </div>
                                 <div className="company__body-company-info-content">
-                                    <p>Payment mothod</p>
+                                    <p>Phương thức thanh toán</p>
                                     <span>{transaction.paymentMethod}</span>
                                 </div>
                             </div>

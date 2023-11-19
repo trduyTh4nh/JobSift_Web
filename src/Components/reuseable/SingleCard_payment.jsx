@@ -38,7 +38,7 @@ const SingleCard_payment = (props) => {
     return (
         <>
             <div className='Single__payment'>
-                <span>Payment Information</span>
+                <span>Thông tin thanh toán</span>
                 <div className='card_payment'>
                     <div className='card_payment_content'>
                         <div className='card_payment_title'>
@@ -52,7 +52,7 @@ const SingleCard_payment = (props) => {
                     </div>
                 </div>
                 <button onClick={toggleModalEdit} className='payment_btnEdit2'>
-                    Edit
+                    Chỉnh sửa
                     <img src={LineImg} alt="" />
                 </button>
             </div>
@@ -62,13 +62,13 @@ const SingleCard_payment = (props) => {
                     <div onClick={toggleModalEdit} className='overlay_payment'></div>
                     <div className='modal_content_Editpayment_top'>
                         <div className='flew'>
-                            <span>Edit Payment</span>
+                            <span>Chỉnh sửa thông tin thanh toán</span>
                             <button onClick={toggleModalEdit}>
                                 <img src={iconClose} alt="" />
                             </button>
                         </div>
                         <div className='Single__payment'>
-                            <span>Payment Information</span>
+                            <span>Thông tin thanh toán</span>
                             <div className='card_payment'>
                                 <div className='card_payment_content'>
                                     <div className='card_payment_title'>
@@ -81,14 +81,16 @@ const SingleCard_payment = (props) => {
                                     <img src={CodeImg} alt="" />
                                 </div>
                             </div>
-                            <button onClick={toggleModalEdit} className='payment_btnEdit1'>
-                                Link another PayPal Account
-                                <img src={LineImg} alt="" />
-                            </button>
-                            <button onClick={toggleModalEdit} className='payment_btnEdit2'>
-                                Link another PayPal Account
-                                <img src={LineImg} alt="" />
-                            </button>
+                            <div style={{display: 'flex', gap: 10}}>
+                                <button onClick={toggleModalEdit} className='payment_btnEdit1'>
+                                    Huỷ
+                                    <img src={LineImg} alt="" />
+                                </button>
+                                <button onClick={toggleModalEdit} className='payment_btnEdit2'>
+                                    Liên kết thêm tài khoản PayPal
+                                    <img src={LineImg} alt="" />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

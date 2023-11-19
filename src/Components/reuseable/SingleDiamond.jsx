@@ -55,7 +55,7 @@ const SingleDiamond = (props) => {
                         <span>{cost_op}</span>
                         <span>VND</span>
                     </div>
-                    <button onClick={openModalPayment}>Buy now</button>
+                    <button onClick={openModalPayment}>Mua ngay</button>
                 </div>
             </div>
             {modalPayment && (
@@ -64,7 +64,7 @@ const SingleDiamond = (props) => {
                         <div onClick={toggleModal} className='overlay_payment'></div>
                         <div className='modal_content_payment'>
                             <div className='flew'>
-                                <span>Purchase</span>
+                                <span>Mua hàng</span>
                                 <button className='btn_close' onClick={toggleModal}>
                                     <img src={iconClose} alt="" />
                                 </button>
@@ -78,7 +78,7 @@ const SingleDiamond = (props) => {
                                     <span>{cost_op}</span>
                                     <span>VND</span>
                                 </div>
-                                <button className='close_modal' onClick={openModalPaymentSuccess}>Pay</button>
+                                <button className='close_modal' onClick={openModalPaymentSuccess}>Thanh toán</button>
                             </div>
                             <div className='border_left'>
                                 <SingleCard_payment item={payment} />
@@ -97,7 +97,7 @@ const SingleDiamond = (props) => {
                         <div onClick={toggleModalSuccess} className='overlay_paymentSuccsess'></div>
                         <div className='modal_content_paymentSuccsess'>
                             <div className='top_popup'>
-                                <span>Payment Success</span>
+                                <span>Thanh toán thành công</span>
                                 <button className='btn_close' onClick={toggleModalSuccess}>
                                     <img src={iconClose} alt="" />
                                 </button>
