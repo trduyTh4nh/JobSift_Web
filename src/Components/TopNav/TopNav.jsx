@@ -141,7 +141,7 @@ const TopNav = () => {
         localStorage.setItem('user', JSON.stringify(response.data.user))
         setPopupMessage('Đăng nhập thành công!');
         setPopupOpen(true);
-
+        window.location.reload();
       })
       .catch((error) => {
         if (error.response) {

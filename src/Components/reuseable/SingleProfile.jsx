@@ -35,7 +35,7 @@ const SingleProfile = (props) => {
     setTextEmail(text.target.value)
   }
 
-  
+
 
   const [enterprise, setEnterprise] = useState()
 
@@ -108,19 +108,21 @@ const SingleProfile = (props) => {
             </div>
           </div>
 
-          <div className="profile__body-company-info-item">
-            <img className='flexible-img' src={MapImg} alt="" />
-            <div className="profile__body-company-info-content">
-              <p>Trụ sở</p>
-              <span>{enterprise ? enterprise.address : ''}</span>
-            </div>
+
+        <div className="profile__body-company-info-item">
+          <img className='flexible-img' src={MapImg} alt="" />
+          <div className="profile__body-company-info-content">
+            <span style={{
+              marginBottom: 20,
+              color: '#909090',
+              fontWeight: "400",
+              fontSize: 16
+            }}>Description</span>
+            <p style={{
+              marginTop: 10,
+              color: '#000'
+            }}>{enterprise ? enterprise.description : ''}</p>
           </div>
-
-        </div>
-
-        <div className="profile__body-company-description">
-          <span>Miêu tả</span>
-          <p>{enterprise ? enterprise.description : ''}</p>
         </div>
       </div>
 
