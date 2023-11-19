@@ -75,14 +75,14 @@ const TopNav = () => {
 
   const handleSubmitPost = async () => {
     const user = localStorage.getItem('user')
-
-    const idUser = JSON.parse(user).id_user;
+    console.log(user)
+    const idUser = JSON.parse(user).id_ntd;
 
     try {
       const data = {
         ...dataPost,
         job_time: '08:00:00',
-        id_user: user.id_ntd
+        id_user: idUser
       }
       console.log(data)
       const response = await axios.post(`http://${API_URL}:3001/addpost`, data, {
@@ -90,7 +90,9 @@ const TopNav = () => {
           "Content-Type": 'application/json'
         }
       });
-
+      alert('Đăng tải thành công')
+      setModal(false)
+      setDataPost({})
       console.log(response.data);
     } catch (error) {
       console.log(error);
@@ -644,7 +646,7 @@ const TopNav = () => {
             <div className='modal_content_payment_top'>
               <div className='flew'>
                 <div className='title-popup'>
-                  <span>Post</span>
+                  <span>Đăng bài</span>
                 </div>
                 <button onClick={toggleModal}>
                   <img src={iconClose} alt="" />
@@ -653,7 +655,7 @@ const TopNav = () => {
               <div className='post'>
                 <div className='post_left'>
                   <div className='detail_post'>
-                    <span>Title</span>
+                    <span>Tiêu đề</span>
                     <input className='input-post' onChange={(text) => {
                       setDataPost({
                         ...dataPost,
@@ -662,7 +664,7 @@ const TopNav = () => {
                     }} type="text" placeholder='' />
                   </div>
                   <div className='detail_post'>
-                    <span>Category</span>
+                    <span>Loại công việc</span>
                     <select id="num" onChange={(text) => {
                       setDataPost({
                         ...dataPost,
@@ -675,7 +677,7 @@ const TopNav = () => {
                     </select>
                   </div>
                   <div className='detail_post'>
-                    <span>Address</span>
+                    <span>Địa chỉ</span>
                     <input className='input-post' type="text" placeholder='' onChange={(text) => {
                       setDataPost({
                         ...dataPost,
@@ -684,7 +686,7 @@ const TopNav = () => {
                     }} />
                   </div>
                   <div className='detail_post'>
-                    <span>Salary</span>
+                    <span>Mức lương</span>
                     <div className='flex_post'>
                       <input className='input-post' onChange={(text) => {
                         setDataPost({
@@ -709,7 +711,7 @@ const TopNav = () => {
                     </div>
                   </div>
                   <div className='detail_post'>
-                    <span>Position</span>
+                    <span>Vị trí</span>
                     <input className='input-post' onChange={(text) => {
                       setDataPost({
                         ...dataPost,
@@ -718,7 +720,7 @@ const TopNav = () => {
                     }} type="text" placeholder='' />
                   </div>
                   <div className='detail_post'>
-                    <span>Application Deadline</span>
+                    <span>Hạn nộp</span>
                     <input className='input-post'
                       onChange={(text) => {
                         setDataPost({
@@ -728,11 +730,33 @@ const TopNav = () => {
                       }}
                       type="date" placeholder='' />
                   </div>
+                  <div className='detail_post'>
+                    <span>Ngành nghề</span>
+                    <input className='input-post'
+                      onChange={(text) => {
+                        setDataPost({
+                          ...dataPost,
+                          nganh_nghe: text.target.value
+                        })
+                      }}
+                       placeholder='' />
+                  </div>
                 </div>
 
                 <div className='post_right'>
                   <div className='detail_post'>
-                    <span>Description</span>
+                    <span>Kinh nghiệm yêu cầu</span>
+                    <input className='input-post'
+                      onChange={(text) => {
+                        setDataPost({
+                          ...dataPost,
+                          kinh_nghiem_yeu_cau: text.target.value
+                        })
+                      }}
+                      placeholder='' />
+                  </div>
+                  <div className='detail_post'>
+                    <span>Miêu tả</span>
                     <input className='input-post descriptionInput'
                       style={{ height: '200px', verticalAlign: 'text-top' }}
                       onChange={(text) => {
@@ -744,7 +768,7 @@ const TopNav = () => {
                       type="text" placeholder='' />
                   </div>
                   <button className='post_modal' onClick={handleSubmitPost} >
-                    <p>Post</p>
+                    <p>Đăng tải</p>
                     <img src={lineMore} alt="" />
                   </button>
                 </div>

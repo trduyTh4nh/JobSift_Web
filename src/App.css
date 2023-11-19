@@ -493,7 +493,9 @@ a {
   /* display: flex;
   justify-content: space-between;
   flex-wrap: wrap; */
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 25px
 }
 
 .company__body-company-info-item {
@@ -516,7 +518,7 @@ a {
 }
 
 .company__body-ggMap img {
-  height: 220px;
+  height: 100px;
 }
 
 .company__footer {
