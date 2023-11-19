@@ -1737,3 +1737,17 @@ body.active_modal {
   width: 200px;
   height: 200px;
 }
+.div_image{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.single_icon{
+  height: 60px;
+}
+.single_iconLayer {
+  height: 200px;
+  padding: 10px;
+}

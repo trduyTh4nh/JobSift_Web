@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 import navLinks from '../../assets/dummy-data/navLinks';
+import navLinksAdmin from '../../assets/dummy-data/navLinksAdmin';
 import "./sidebar.css"
 import { Link } from 'react-router-dom';
 import profileImg from '../../assets/images/Image-60.svg';
@@ -20,7 +21,9 @@ const Sidebar = () => {
       window.location.reload()
     }
    }
-
+  if(!user){
+    return
+  }
   return (
     <div className="sidebar">
       <div className="sidebar__top">
@@ -37,7 +40,19 @@ const Sidebar = () => {
       <div className='box-wrap'>
         <div className='menu'>
           <ul className='nav__list'>
-            {
+            { user.id_ad ? navLinksAdmin.map((item, index) => (
+                <li className='nav__item' key={index}>
+                  <NavLink to={item.path} className={navClass =>
+                    navClass.isActive ? "nav__active nav__link" : "nav__link"}>
+                    <span>
+                      <i>
+                        <img className='icon-sidebar' src={item.icon} alt="" />
+                      </i>
+                    </span>
+                    <p>{item.display}</p>
+                  </NavLink>
+                </li>
+              )) :
               navLinks.map((item, index) => (
                 <li className='nav__item' key={index}>
                   <NavLink to={item.path} className={navClass =>

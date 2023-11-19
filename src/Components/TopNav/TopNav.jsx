@@ -47,7 +47,12 @@ const TopNav = () => {
   const [userMain, setUserMain] = useState()
 
   const [isPopupOpen, setPopupOpen] = useState(false);
-
+  const [validState, setValidState] = useState({
+    email: true,
+    password: true,
+    repassword: true,
+    phone: true,
+  })
   const [popupMessage, setPopupMessage] = useState('');
 
   const user = JSON.parse(localStorage.getItem('user'))
@@ -421,6 +426,7 @@ const TopNav = () => {
                     <div className='inputLogin'>
                       <label style={{ marginRight: 10, marginTop: 10 }} htmlFor="email">Email: </label>
                       <input
+                        style={{border: validState.email ? 'none' : '2px rgb(255 139 139) solid'}}
                         type="email"
                         id="email"
                         name="email"
@@ -453,6 +459,7 @@ const TopNav = () => {
                     <div className='inputLogin'>
                       <label style={{ marginRight: 10, marginTop: 10 }} htmlFor="phone">Số điện thoại: </label>
                       <input
+                        style={{border: validState.phone ? 'none' : '2px rgb(255 139 139) solid'}}
                         type="text"
                         id="phone"
                         name="phone"
@@ -469,6 +476,7 @@ const TopNav = () => {
                     <div className='inputLogin'>
                       <label style={{ marginRight: 10, marginTop: 10 }} htmlFor="password">Mật khẩu: </label>
                       <input
+                        style={{border: validState.password ? 'none' : '2px rgb(255 139 139) solid'}}
                         type="password"
                         id="password"
                         name="password"
@@ -486,6 +494,7 @@ const TopNav = () => {
                     <div className='inputLogin'>
                       <label style={{ marginRight: 10, marginTop: 10 }} htmlFor="password">Nhập lại mật khẩu: </label>
                       <input
+                        style={{border: validState.repassword ? 'none' : '2px rgb(255 139 139) solid'}}
                         type="password"
                         id="password"
                         name="password"
@@ -498,16 +507,52 @@ const TopNav = () => {
                         }}
                       />
                     </div>
-
+                    {
+                      (!validState.email && !validState.password && !validState.repassword && !validState.phone) ? (
+                        <p style={{fontWeight: 'bold', color: 'rgb(255 139 139)'}}>Vui lòng nhập đầy đủ thông tin!</p>
+                      ) : ''
+                    }
                     <div className='wrap-button'>
                       <button
                         className='btn-Login'
                         onClick={() => {
+                          if(!dataSignUp.email || !dataSignUp.password || !dataSignUp.repassword || !dataSignUp.phone){
+                            setValidState({
+                              email: dataSignUp.email,
+                              password: dataSignUp.password,
+                              repassword: dataSignUp.repassword,
+                              phone: dataSignUp.phone
+                            })
+                            
+                          }
+                          if(!dataSignUp.phone||dataSignUp.phone.target.value.length > 10 || dataSignUp.phone.target.value.length < 10){
+                            setValidState({
+                                ...validState,
+                                phone: false
+                            })
+                            return
+                          }
+                          if(!dataSignUp.email||!dataSignUp.email.target.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)){
+                            setValidState({
+                              ...validState,
+                              email: false
+                            })
+                            return
+                          }
+                          if(!dataSignUp.password||!dataSignUp.password.target.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)){
+                            setValidState({
+                              ...validState,
+                              password: false
+                            })
+                            return
+                          }
                           if (dataSignUp.password.target.value === dataSignUp.repassword.target.value) {
                             setIsToggleToSignup(false);
                           } else {
-                            console.log(dataSignUp.password, dataSignUp.repassword);
-                            alert("Password không khớp!");
+                            setValidState({
+                              ...validState,
+                              repassword: false
+                            })
                           }
                         }}
                       >

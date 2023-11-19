@@ -14,7 +14,14 @@ const JobPosted = () => {
 
   const [jobs, setJobs] = useState([])
   useEffect(() => {
-      axios.post(`http://${API_URL}:3001/post/${user.id_ntd ? user.id_ntd : 1}`).then(e => {
+    if(user.id_ad){
+      axios.get(`http://${API_URL}:3001/`).then(e => {
+          setJobs(e.data)
+          console.log(e.data)
+      })
+      return
+    }
+      axios.post(`http://${API_URL}:3001/post/${user.id_ntd}`).then(e => {
           setJobs(e.data)
           console.log(e.data)
       })
@@ -64,15 +71,28 @@ const JobPosted = () => {
                     </div>
                   </div>
                 </div>
-
-                <button className='cart__posted_end'>
-                  <Link to={"application/"+job.id_post} className='between'>
-                    {/* <NavLink to = "application"> */}
-                    Xem các lượt ứng tuyển
-                    <img src={lineMore} alt="" />
-                    {/* </NavLink> */}
-                  </Link>
-                </button>
+                {
+                  user.id_ad ? (
+                    <button className='cart__posted_end'>
+                      <Link to={"jobPosted/reports/"+job.id_post} className='between'>
+                        {/* <NavLink to = "application"> */}
+                        Xem các lượt tố cáo
+                        <img src={lineMore} alt="" />
+                        {/* </NavLink> */}
+                      </Link>
+                    </button>
+                  ) : (
+                    <button className='cart__posted_end'>
+                      <Link to={"application/"+job.id_post} className='between'>
+                        {/* <NavLink to = "application"> */}
+                        Xem các lượt ứng tuyển
+                        <img src={lineMore} alt="" />
+                        {/* </NavLink> */}
+                      </Link>
+                    </button>
+                  )
+                }
+                
 
                 {/* <button className='cart__posted_end'>
                   <Link to="./postDetail" className='between' >
