@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import "./dashboard.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from '../ipConfig';
 import SingleCard from '../Components/reuseable/SingleCard';
 import DivCard from '../Components/reuseable/Divcard';
@@ -60,6 +60,7 @@ const div4Obj = {
 }
 
 const Dashboard = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
   const [dnStats, setDnStats] = useState({
     card1: {
       title: 'Bài đăng',
@@ -77,8 +78,15 @@ const Dashboard = () => {
       icon: icon3Img,
     }
   })
+  const navigation = useNavigate()
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'))
+    if(!user.id_ntd){
+      if(user.id_ad){
+        navigation("/dashboardadmin")
+      }
+      return
+    }
     axios.get(`http://${API_URL}:3001/enterprise/statistics/${user.id_dn}`).then(e => {
       console.log(e.data)
       setDnStats({
@@ -102,6 +110,15 @@ const Dashboard = () => {
       alert('error: ' + e)
     })
   }, [])
+  if(!user.id_ntd){
+    return (
+      <div className='main__layout-mini' style={{display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column'}}>
+        <h1>🤔</h1>
+        <h1>Ôi...</h1>
+        <p>Bạn không có quyền truy cập trang này, vui lòng đăng nhập hoặc đăng ký với quyền nhà tuyển dụng</p>
+      </div>
+    )
+  }
   return (
     <div className='main__layout-mini'>
       <div className="identical__title">

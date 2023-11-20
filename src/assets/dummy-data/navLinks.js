@@ -33,11 +33,6 @@ const navLinks = [
       icon: statisticalImg,
       display: "Thống kê",
     },
-    {
-      path: "/accountSettings",
-      icon: accountImg,
-      display: "Cài đặt",
-    },
     // {
     //   path: "/myWallet",
     //   icon: myWalletImg,

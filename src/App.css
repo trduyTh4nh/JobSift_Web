@@ -1762,3 +1762,44 @@ body.active_modal {
   height: 200px;
   padding: 10px;
 }
+
+.homeAdmin_top{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 30px;
+}
+.homeAdmin_top span{
+  font-size: 3rem;
+  font-weight: 700;
+}
+.homeAdmin_top img {
+  height: 130px;
+  
+}
+.homeAdmin_content{
+  background: var(--body-bg);
+  width: 50%;
+  height: auto;
+}
+
+.div_homeAdmin_content{
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content_text ul li{
+  display: grid;
+  row-gap: 5px;
+  list-style-type: circle;
+}
+.content_text li{
+  padding: 5px 0;
+}
+.homeAdmin_content{
+  display: grid;
+  row-gap: 20px;
+  padding: 15px;
+  border-radius: 20px;
+}

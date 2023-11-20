@@ -79,7 +79,8 @@ const Dashboard = () => {
   })
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'))
-    axios.get(`http://${API_URL}:3001/enterprise/statistics/${user.id_dn}`).then(e => {
+    
+    axios.get(`http://${API_URL}:3001/admin/statistics`).then(e => {
       console.log(e.data)
       setDnStats({
         card1: {

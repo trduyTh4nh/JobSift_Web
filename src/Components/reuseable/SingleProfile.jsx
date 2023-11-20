@@ -131,6 +131,7 @@ const SingleProfile = (props) => {
       </div>
 
     </div>
+    </div>
   )
 }
 

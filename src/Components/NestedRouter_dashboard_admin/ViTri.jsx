@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
 import SingleCard from '../reuseableAdmin/SingleCard';
 import "remixicon/fonts/remixicon.css";
-import { RiBriefcase4Line } from 'react-icons/ri';
-import { RiMoneyDollarCircleLine } from 'react-icons/ri';
-import { RiAdvertisementLine } from 'react-icons/ri';
-import { RiFlag2Line } from 'react-icons/ri';
 import Chart from "react-apexcharts";
+import axios from 'axios';
+import { API_URL } from '../../ipConfig';
 const card1Obj = {
   title: "Vị trí 1",
   totalNumber: '07',
@@ -27,77 +25,146 @@ const card4Obj = {
 
 
 const ThisWeek = () => {
-  // const [state , setState] = useState({
-  //   options: {
-  //     chart: {
-  //       id: "basic-bar"
-  //     },
-  //     xaxis: {
-  //       categories: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-  //     }
-  //   },
-  //   series: [
-  //     {
-  //       name: "Job recruitment",
-  //       data: [3, 6, 10, 7, 4, 5,]
-  //     },
-  //     {
-  //       name: "Application",
-  //       data: [111, 71, 91, 81, 101, 91]
-  //     },
-  //     {
-  //       name: "Finacial",
-  //       data: [200, 440, 100, 360, 160, 320]
-  //     },
-  //     // {
-  //     //   name: "Report",
-  //     //   data: [39, 20, 45, 30, 59, 30, 90, 101, 200]
-  //     // },
-  //   ]
-  // })
-  const [state , setState] = useState({
+  
+  const [state, setState] = useState({
     options: {
       chart: {
+        zoom: {
+          enabled: true,
+          type: 'x'
+        },
         id: "basic-bar"
       },
       xaxis: {
-        categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
-      }
+        categories: []
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          endingShape: 'rounded',
+          type: 'bar',
+          height: 350,
+          borderRadius: 4,
+
+        },
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'straight'
+      },
     },
-    series: [
-      {
-        name: "Lượt đăng tuyển",
-        data: [0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5]
-      },
-      {
-        name: "Lượt ứng tuyển",
-        data: [5, 10, 13, 17, 20, 24, 27, 30, 36, 45, 49, 55, 60, 65, 65, 67, 70, 70, 71, 80, 87, 89, 90, 91]
-      },
-      // {
-      //   name: "Report",
-      //   data: [39, 20, 45, 30, 59, 30, 90, 101, 200]
-      // },
-    ]
-  })
-  return ( 
+    series: []
+  });
+  const [month, setMonth] = useState(11)
+
+
+  const handleMonthChange = (e) => {
+    const selectedMonth = e.target.value;
+    setMonth(selectedMonth);
+  };
+
+  useEffect(() => {
+
+    console.log("MOTH TRANFERed: " + month)
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(`http://${API_URL}:3001/positionstatitical`, { month: month });
+        const { result } = response.data;
+        const groupedData = result.reduce((acc, currentItem) => {
+          const { ten_vitri, count, date_ut } = currentItem;
+          const formatDate = new Date(date_ut);
+          const formattedDate = formatDate.getDate();
+
+          if (!acc[ten_vitri]) {
+            acc[ten_vitri] = {
+              ten_vitri,
+              count: [parseInt(count)],
+              date_ut: [formattedDate]
+            };
+          } else {
+            acc[ten_vitri].count.push(parseInt(count));
+            acc[ten_vitri].date_ut.push(formattedDate);
+          }
+
+          return acc;
+        }, {});
+
+        const resultData = Object.values(groupedData);
+        console.log(resultData);
+
+        const seriesData = resultData.map((data) => {
+          const arrTemp = Array.from({ length: 31 }, () => 0);
+          data.date_ut.forEach((date, index) => {
+            if (date >= 1 && date <= 31) {
+              arrTemp[date - 1] = data.count[index];
+            }
+          });
+          return { name: data.ten_vitri, data: arrTemp };
+        });
+
+        setState({
+          options: {
+            chart: {
+              id: "basic-bar"
+            },
+            xaxis: {
+              categories: Array.from({ length: 31 }, (_, i) => i + 1)
+            }
+          },
+          series: seriesData
+        });
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [month]);
+
+  return (
     <div className="dashboard__wrapper">
-        <div className="dashboard__cards">
-          <SingleCard item={card1Obj} />
-          <SingleCard item={card2Obj} />
-          <SingleCard item={card3Obj} />
-          <Link to = './diamondDashboard'><SingleCard item={card4Obj} /></Link>
-        </div>
-        <div className="mixed-chart">
-            <Chart
-              options={state.options}
-              series={state.series}
-              type="line"
-              width="800"
-            />
-          </div>
+        <div style={{
+        display: "flex",
+        flexDirection: "row",
+        gap: 10,
+      }}>
+        <h3>Hiển thị tình trạng theo: </h3>
+        <select style={{
+          padding: 10,
+          borderWidth: 2,
+          borderRadius: 16
+        }}
+        value={month}
+          onChange={handleMonthChange}>
+          <option value={1}>Tháng 1</option>
+          <option value={2}>Tháng 2</option>
+          <option value={3}>Tháng 3</option>
+          <option value={4}>Tháng 4</option>
+          <option value={5}>Tháng 5</option>
+          <option value={6}>Tháng 6</option>
+          <option value={7}>Tháng 7</option>
+          <option value={8}>Tháng 8</option>
+          <option value={9}>Tháng 9</option>
+          <option value={10}>Tháng 10</option>
+          <option value={11}>Tháng 11</option>
+          <option value={12}>Tháng 12</option>
+        </select>
       </div>
-    
-  )
+      <div className="mixed-chart">
+        {state.options && (
+          <Chart
+            options={state.options}
+            series={state.series}
+            type="area"
+            height={500}
+
+          />
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default ThisWeek

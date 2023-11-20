@@ -8,11 +8,6 @@ import icon3Img from '../../assets/images/icon3.svg';
 import icon4Img from '../../assets/images/icon4.svg';
 import Chart from "react-apexcharts";
 import "remixicon/fonts/remixicon.css";
-import { RiBriefcase4Line } from 'react-icons/ri';
-import { RiMoneyDollarCircleLine } from 'react-icons/ri';
-import { RiAdvertisementLine } from 'react-icons/ri';
-import { RiFlag2Line } from 'react-icons/ri';
-
 const card1Obj = {
   title: "Doanh thu",
   totalNumber: '07',
