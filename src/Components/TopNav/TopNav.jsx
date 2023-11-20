@@ -108,6 +108,10 @@ const TopNav = () => {
           "Content-Type": 'application/json'
         }
       });
+      const dataNotif = await axios.post(`http://${API_URL}:3001/notify/post`, {
+        "content": `${JSON.parse(user).name_dn} vừa mới đăng tải bài đăng: ${dataPost.tieu_de}`,
+        "id_ntd": JSON.parse(user).id_ntd
+      })
       alert('Đăng tải thành công')
       setModal(false)
       setDataPost({})

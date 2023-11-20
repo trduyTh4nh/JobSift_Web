@@ -29,11 +29,6 @@ const navLinks = [
       display: "Bài đăng",
     },
     {
-      path: "/statistical",
-      icon: statisticalImg,
-      display: "Thống kê",
-    },
-    {
       path: "/accountSettings",
       icon: accountImg,
       display: "Cài đặt",
