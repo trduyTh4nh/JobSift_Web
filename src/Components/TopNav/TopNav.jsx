@@ -112,6 +112,11 @@ const TopNav = () => {
         "content": `${JSON.parse(user).name_dn} vừa mới đăng tải bài đăng: ${dataPost.tieu_de}`,
         "id_ntd": JSON.parse(user).id_ntd
       })
+      const diamond = await axios.post('http://' + API_URL + ':3001' + '/diamond/' + JSON.parse(user).id_user)
+      const res = await axios.post('http://' + API_URL + ':3001/diamond/set', {
+        "id_user": JSON.parse(user).id_user,
+        "diamond_count": diamond.data.diamond_count - 50
+      })
       alert('Đăng tải thành công')
       setModal(false)
       setDataPost({})
@@ -119,6 +124,8 @@ const TopNav = () => {
     } catch (error) {
       console.log(error);
     }
+    
+    
   }
 
   useEffect(() => {
@@ -374,18 +381,7 @@ const TopNav = () => {
             </div>
           </div>
 
-          <div className='left-component'>      
-          {
-  user.id_ntd && user ? (
-            <div className="top__nav-right">
-              <span className='notification'>
-                <i><img className='icon__notifi' src={iconNotifi} alt="" /></i>
-                <span className='badge'></span>
-              </span>
-
-            </div>
-  ) : ''
-}     
+          <div className='left-component'>       
                 {
                   user.id_ntd ? (
                     <div className='top__nav-right-2'>

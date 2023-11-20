@@ -33,7 +33,7 @@ const JobPosted = () => {
         {jobs.map((job) => (
           
           <li key={job.id}>
-            <Link to={`/ListPost/PostDetail/${job.id_post}`} state={{ job }}>
+            <div>
               <div className='cart__posted'>
                 <div className='cart__posted_top_wrapper'>
                   <div className='cart__posted_top'>
@@ -41,7 +41,6 @@ const JobPosted = () => {
                       <img width={64} src={job.logo_dn} alt='Logo công ty' style={{objectFit: 'cover'}} />
                       <span>{job.tieu_de}</span>
                     </div>
-                    <button className='btn__posted_top-wrap'>Xoá bài đăng{'  >'}</button>
                   </div>
                   <div className='cart__posted_body'>
                     <div className="profile__body-company-info">
@@ -102,7 +101,7 @@ const JobPosted = () => {
                 </button> */}
 
               </div>
-            </Link>
+            </div>
           </li>
         ))}
       </ul>
