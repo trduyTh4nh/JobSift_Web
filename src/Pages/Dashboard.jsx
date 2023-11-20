@@ -78,7 +78,15 @@ const Dashboard = () => {
       icon: icon3Img,
     }
   })
+
+  const [card4, setCardFour] = useState({
+    title: 'Số kim cương',
+    totalNumber: 0,
+    icon: icon4Img,
+  })
+
   const navigation = useNavigate()
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'))
     if(!user.id_ntd){
@@ -105,9 +113,26 @@ const Dashboard = () => {
           totalNumber: e.data.count_approval,
           icon: icon3Img,
         },
+        card4: {
+          title: 'Số kim cương',
+          totalNumber: 0,
+          icon: icon4Img,
+        }
       })
+      axios.post('http://' + API_URL + ':3001' + '/diamond/' + user.id_user).then(e => {
+        
+        setCardFour({
+            title: 'Số kim cương',
+            totalNumber: e.data.diamond_count,
+            icon: icon4Img,
+        })
+    }).catch(e => {
+        console.error('Error while getting diamond: ' + e)
+        alert('Error while getting diamond: ' + e)
+    })
     }).catch((e) => {
       alert('error: ' + e)
+      
     })
   }, [])
   if(!user.id_ntd){
@@ -129,7 +154,7 @@ const Dashboard = () => {
           <SingleCard item={dnStats.card1} />
           <SingleCard item={dnStats.card2} />
           <SingleCard item={dnStats.card3} />
-          <Link to = './diamondDashboard'><SingleCard item={card4Obj} /></Link>
+          <Link to = './diamondDashboard'><SingleCard item={card4} /></Link>
         </div>
       </div>
       <div className="identical__title">

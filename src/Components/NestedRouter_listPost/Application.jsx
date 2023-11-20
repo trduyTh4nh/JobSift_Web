@@ -99,7 +99,7 @@ const Application = () => {
                   <button onClick={() => setStatus(1, job.id_recruit)} className='cart__posted-btnApproveorDe'>
                     <p>Chấp nhận</p>
                   </button>
-                  <button className='cart__posted-btnApproveorDe'>
+                  <button onClick={() => setStatus(2, job.id_recruit)} className='cart__posted-btnApproveorDe'>
                     <p>Từ chối</p>
                   </button>
                 </div>
