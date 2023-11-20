@@ -165,27 +165,34 @@ const Dashboard = () => {
           {/* <button className='btn__div'>
             <DivCard item={div1Obj}/>
           </button>   */}
-          <div class="container">
-            <div class="child bounce">
-              <DivCard item={div1Obj} />
+          <Link to="/listpost">
+            <div class="container">
+              <div class="child bounce">
+                <DivCard item={div1Obj} />
+              </div>
             </div>
-          </div>
-          <div class="container">
-            <div class="child bounce">
-              <DivCard item={div2Obj} />
+          </Link>
+          <Link to="/listpost">
+            <div class="container">
+              <div class="child bounce">
+                <DivCard item={div2Obj} />
+              </div>
             </div>
-          </div>
-          <div class="container">
-            <div class="child bounce">
-              <DivCard item={div3Obj} />
+          </Link>
+          <Link to="/chat">
+            <div class="container">
+              <div class="child bounce">
+                <DivCard item={div3Obj} />
+              </div>
             </div>
-          </div>
-          <div class="container">
-            <div class="child bounce">
-              <DivCard item={div4Obj} />
+          </Link>
+          <Link to='/mycompany'>
+            <div class="container">
+              <div class="child bounce">
+                <DivCard item={div4Obj} />
+              </div>
             </div>
-          </div>
-
+          </Link>
           {/* <DivCard item={div2Obj} />
           <DivCard item={div3Obj} />
           <DivCard item={div4Obj} /> */}
@@ -207,7 +214,6 @@ const Dashboard = () => {
                 </span>
                 <span className='item__text-footer'>094383643</span>
               </div>
-
               <div className='item__footer-info'>
                 <span className='item__icon-footer'>
                   <i>

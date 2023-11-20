@@ -67,9 +67,7 @@ const ListPost = () => {
               </Link>
             </li>
             <li>
-              <Link to="./application">
                 <SingleCard item = {dnStats.card2}/>
-              </Link>
             </li>
           </ul>
         </nav>

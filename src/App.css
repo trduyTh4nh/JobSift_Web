@@ -632,6 +632,7 @@ a {
   background: var(--primary-color);
   padding-left: 40px;
   padding-right: 40px;
+  padding-top: 70px;
 
 }
 /* .listPost__statistical{
