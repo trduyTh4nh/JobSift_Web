@@ -29,9 +29,11 @@ const navLinks = [
       display: "Bài đăng",
     },
     {
-      path: "/accountSettings",
-      icon: accountImg,
-      display: "Cài đặt",
+
+      path: "/statistical",
+      icon: statisticalImg,
+      display: "Thống kê",
+
     },
     // {
     //   path: "/myWallet",

@@ -1,10 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
-import { RiBriefcase4Line } from 'react-icons/ri';
-import { RiFlag2Line } from 'react-icons/ri';
-import iconJPost from '../assets/images/job__posted.svg';
-import iconPostAppl from '../assets/images/post__appl.svg';
 
 
 import SingleCard from '../Components/reuseableAdmin/SingleCard';

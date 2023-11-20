@@ -6,22 +6,25 @@ import { RiHomeLine } from 'react-icons/ri';
 import { RiPieChart2Line } from 'react-icons/ri';
 import { RiToolsFill } from 'react-icons/ri';
 import { RiSettingsLine } from 'react-icons/ri';
+import DashBoard from '../dashboard.svg'
+import Home from '../home.svg'
+import Manage from '../manage.svg'
 
 
 const navLinksAdmin = [
     {
       path: "/dashboardadmin",
-      icon: <RiDashboardLine/>,
+      icon: DashBoard,
       display: "Dashboard",
     },
     {
       path: "/homeAdmin",
-      icon: <RiHomeLine/>,
+      icon: Home,
       display: "Home",
     },
     {
         path: "/manage",
-        icon: <RiToolsFill/>,
+        icon: Manage,
         display: "Manage",
       },
   ];

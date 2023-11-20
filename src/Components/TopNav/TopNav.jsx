@@ -55,7 +55,7 @@ const TopNav = () => {
   })
   const [popupMessage, setPopupMessage] = useState('');
 
-  const user = JSON.parse(localStorage.getItem('user'))
+  const user = JSON.parse(localStorage.getItem('user')) ? JSON.parse(localStorage.getItem('user')) : {status: false}
 
   const closePopup = () => {
     setPopupOpen(false);
@@ -341,7 +341,8 @@ const TopNav = () => {
               </a>
             </div>
 
-
+            {
+              user.id_ntd ? (
             <div className='wrap-option'>
               <a className='top__nav-link'>
                 <Link to="chat">
@@ -349,8 +350,10 @@ const TopNav = () => {
                 </Link>
               </a>
             </div>
-
-
+ ) : ''
+}
+            {
+              user.id_ntd ? (
             <div className='wrap-option'>
               <a className='top__nav-link'>
                 <Link to="contact">
@@ -358,6 +361,9 @@ const TopNav = () => {
                 </Link>
               </a>
             </div>
+              ) : ''
+            }
+            
 
             <div className='wrap-option'>
               <a className='top__nav-link'>
@@ -368,7 +374,9 @@ const TopNav = () => {
             </div>
           </div>
 
-          <div className='left-component'>
+          <div className='left-component'>      
+          {
+  user.id_ntd && user ? (
             <div className="top__nav-right">
               <span className='notification'>
                 <i><img className='icon__notifi' src={iconNotifi} alt="" /></i>
@@ -376,15 +384,22 @@ const TopNav = () => {
               </span>
 
             </div>
-
-            <div className='top__nav-right-2'>
-              <div className="nav-btn__post-job">
-                <button onClick={toggleModal} className='btn__post-job' >
-                  <span className='text__btn__post'>Đăng tải</span>
-                </button>
-              </div>
-            </div>
-
+  ) : ''
+}     
+                {
+                  user.id_ntd ? (
+                    <div className='top__nav-right-2'>
+                    <div className="nav-btn__post-job">
+                    <button onClick={toggleModal} className='btn__post-job' >
+                      <span className='text__btn__post'>Đăng tải</span>
+                    </button>
+                    </div>
+                    </div>
+                  ) : ''
+                }
+                
+              
+          
             {
               checkUser && (
                 <div style={{

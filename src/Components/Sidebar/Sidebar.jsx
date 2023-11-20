@@ -11,23 +11,24 @@ import logo from '../../assets/icon/JS.svg'
 
 const Sidebar = () => {
   const navigate = useNavigate()
-   const user = JSON.parse(localStorage.getItem('user'))
+  const user = JSON.parse(localStorage.getItem('user'))
 
-   console.log(user)
-   const handleLogOut = () => {
-    if(window.confirm("Bạn có chắc là muốn đăng xuất?")){
+  console.log(user)
+  const handleLogOut = () => {
+    if (window.confirm("Bạn có chắc là muốn đăng xuất?")) {
       localStorage.removeItem('user')
       navigate('/home')
       window.location.reload()
     }
-   }
-  if(!user){
+  }
+  if (!user) {
     return
   }
   return (
     <div className="sidebar">
       <div className="sidebar__top">
         <img src={logo} className='logoMain'>
+          
         </img>
 
       </div>
@@ -40,19 +41,19 @@ const Sidebar = () => {
       <div className='box-wrap'>
         <div className='menu'>
           <ul className='nav__list'>
-            { user.id_ad ? navLinksAdmin.map((item, index) => (
-                <li className='nav__item' key={index}>
-                  <NavLink to={item.path} className={navClass =>
-                    navClass.isActive ? "nav__active nav__link" : "nav__link"}>
-                    <span>
-                      <i>
-                        <img className='icon-sidebar' src={item.icon} alt="" />
-                      </i>
-                    </span>
-                    <p>{item.display}</p>
-                  </NavLink>
-                </li>
-              )) :
+            {user.id_ad ? navLinksAdmin.map((item, index) => (
+              <li className='nav__item' key={index}>
+                <NavLink to={item.path} className={navClass =>
+                  navClass.isActive ? "nav__active nav__link" : "nav__link"}>
+                  <span>
+                    <i>
+                      <img className='icon-sidebar' src={item.icon} alt="" />
+                    </i>
+                  </span>
+                  <p>{item.display}</p>
+                </NavLink>
+              </li>
+            )) :
               navLinks.map((item, index) => (
                 <li className='nav__item' key={index}>
                   <NavLink to={item.path} className={navClass =>

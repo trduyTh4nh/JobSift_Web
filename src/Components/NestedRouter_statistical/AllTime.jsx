@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import iconActivity from '../../assets/images/post__appl.svg';
-import iconFinacial from '../../assets/images/statis_finacial.svg';
 import iconJob from '../../assets/images/statis_job.svg';
 import Chart from "react-apexcharts";
 
