@@ -12,6 +12,7 @@ const navLinks = [
       path: "/dashboard",
       icon: dashboardImg,
       display: "Dashboard",
+      name: "dashboard-tester"
     },
     {
       path: "/myProfile",

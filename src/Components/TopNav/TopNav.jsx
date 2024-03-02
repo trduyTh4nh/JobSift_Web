@@ -511,7 +511,7 @@ const TopNav = () => {
                       <input
                         style={{border: validState.repassword ? 'none' : '2px rgb(255 139 139) solid'}}
                         type="password"
-                        id="password"
+                        id="re-password"
                         name="password"
                         required
                         onChange={(text) => {

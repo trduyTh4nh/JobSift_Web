@@ -43,7 +43,7 @@ const Sidebar = () => {
           <ul className='nav__list'>
             {user.id_ad ? navLinksAdmin.map((item, index) => (
               <li className='nav__item' key={index}>
-                <NavLink to={item.path} className={navClass =>
+                <NavLink to={item.path}  id={item.name} className={navClass =>
                   navClass.isActive ? "nav__active nav__link" : "nav__link"}>
                   <span>
                     <i>

@@ -1,6 +1,6 @@
 
 
-export const API_URL = "192.168.1.137"
+export const API_URL = "localhost"
 //192.168.1.41// 192.168.1.137
 const IDHouseTP = "192.168.116.1"
 const IPBlackCoffe = "192.168.1.30"

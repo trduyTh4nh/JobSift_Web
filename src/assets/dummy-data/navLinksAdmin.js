@@ -16,16 +16,21 @@ const navLinksAdmin = [
       path: "/dashboardadmin",
       icon: DashBoard,
       display: "Dashboard",
+      name: "dashboard"
     },
     {
       path: "/homeAdmin",
       icon: Home,
       display: "Home",
+      name: "home"
+
     },
     {
         path: "/manage",
         icon: Manage,
         display: "Manage",
+      name: "manage"
+
       },
   ];
   
