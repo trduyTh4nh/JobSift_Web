@@ -50,39 +50,45 @@ import ThisYearStatisticalAdmin from '../Components/NestedRouter_dashboard_admin
 import AllTimeStatisticalAdmin from '../Components/NestedRouter_dashboard_admin/AllTime';
 import ReportDetail from '../Components/reuseableAdmin/ReportDetail';
 
+// Payment
+
+import Payment from '../PaymentKC/Payment'
+
 const Router = () => {
   return (
 
     <Routes>
       <Route path='/' element={<Navigate to="/dashboard" element={<Dashboard />} />} />
-      <Route path='/dashboard' element={<Dashboard />}/>
-      <Route path='/dashboard/diamondDashboard' element = {<DiamondDashboard/>}/>
-      <Route path='/dashboard/diamondDashboard/transactionHistory' element = {<TransactionHistory/>}/>
+      <Route path='/dashboard' element={<Dashboard />} />
+      <Route path='/dashboard/diamondDashboard' element={<DiamondDashboard />}>
+      </Route>
+      <Route path='/payment' element={<Payment></Payment>}></Route>
+      <Route path='/dashboard/diamondDashboard/transactionHistory' element={<TransactionHistory />} />
       <Route path='/myProfile' element={<MyProfile />} />
-      <Route path='/myProfile/companybtnEdit' element={<CompanybtnEdit/>}/>
+      <Route path='/myProfile/companybtnEdit' element={<CompanybtnEdit />} />
       <Route path='/myCompany' element={<MyCompany />}>
         <Route index element={<AllTime />} />
         <Route path='component1' element={<AllTime />} />
         <Route path='component2' element={<ThisMonth />} />
         <Route path='component3' element={<ThisYear />} />
       </Route>
-      <Route path='/myCompany/companybtnEdit' element={<CompanybtnEdit/>}/>
+      <Route path='/myCompany/companybtnEdit' element={<CompanybtnEdit />} />
       <Route path='/listPost' element={<ListPost />}>
         <Route index element={<JobPosted />} />
-        <Route path='jobPosted' element = {<JobPosted/>}/>
-        <Route path='jobPosted/application/:id' element = {<Application/>}/>
-        <Route path='application/:id' element = {<Application/>}/> 
+        <Route path='jobPosted' element={<JobPosted />} />
+        <Route path='jobPosted/application/:id' element={<Application />} />
+        <Route path='application/:id' element={<Application />} />
       </Route>
-      <Route path='/listPost/postDetail/:id' element = {<PostDetail/>}/>
+      <Route path='/listPost/postDetail/:id' element={<PostDetail />} />
       <Route path='/statistical' element={<Statistical />}>
         <Route index element={<TodayStatistical />} />
-        <Route path='todayStatistical' element = {<TodayStatistical/>}/>
-        <Route path='thisWeekStatistical' element = {<ThisWeekStatistical/>}/>
-        <Route path='thisMonthStatistical' element = {<ThisMonthStatistical/>}/>
-        <Route path='thisYearStatistical' element = {<ThisYearStatistical/>}/>
-        <Route path='allTimeStatistical' element = {<AllTimeStatistical/>}/>
+        <Route path='todayStatistical' element={<TodayStatistical />} />
+        <Route path='thisWeekStatistical' element={<ThisWeekStatistical />} />
+        <Route path='thisMonthStatistical' element={<ThisMonthStatistical />} />
+        <Route path='thisYearStatistical' element={<ThisYearStatistical />} />
+        <Route path='allTimeStatistical' element={<AllTimeStatistical />} />
       </Route>
-      <Route path='/accountSettings' element={<AccountSettings />}/>
+      <Route path='/accountSettings' element={<AccountSettings />} />
       {/* <Route path='/myWallet' element={<MyWallet />} /> */}
       <Route path='/dashboardadmin' element={<DashboardAdmin />}>
         <Route index element={<TodayStatisticalAdmin />} />
@@ -100,10 +106,10 @@ const Router = () => {
       </Route>
       <Route path='/manage/reportDetail/:id' element={<ReportDetail />} />
       <Route path='/manage/PostDetail/:id' element={<PostDetail />} />
-      <Route path='home' element = {<Home/>}/>
-      <Route path='chat' element = {<Chat/>}/>
-      <Route path='contact' element = {<Contact/>}/>
-      <Route path='aboutMe' element = {<AboutMe/>}/>
+      <Route path='home' element={<Home />} />
+      <Route path='chat' element={<Chat />} />
+      <Route path='contact' element={<Contact />} />
+      <Route path='aboutMe' element={<AboutMe />} />
     </Routes>
 
   )

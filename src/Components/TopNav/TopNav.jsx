@@ -30,7 +30,12 @@ const TopNav = () => {
 
   const [modalSignup, setModalSignup] = useState(false)
 
-  const [dataPost, setDataPost] = useState({})
+  const [dataPost, setDataPost] = useState({
+    nganh_nghe: 1,
+    position: 1,
+    job_category: "Part-time",
+    deadline: '2025-01-01'
+  })
 
   const [showModal, setShowModal] = useState(false);
 
@@ -80,6 +85,7 @@ const TopNav = () => {
 
 
   const handleSubmitPost = async () => {
+    console.log(dataPost);
     if(dataPost.luong > dataPost.priceTo){
       alert('Tiền lương tối thiểu không thể lớn hơn tiền lương tối đa!')
       return
@@ -230,14 +236,8 @@ const TopNav = () => {
             console.log('File available at', downloadURL);
           });
 
-
-
         }
       );
-
-
-
-
 
     } else {
       console.log('No image selected');
@@ -818,7 +818,7 @@ const TopNav = () => {
                       onChange={(text) => {
                         setDataPost({
                           ...dataPost,
-                          deadline: text.target.value
+                          deadline: text.target.value ? text.target.value : '2025-01-01'
                         })
                       }}
                       type="date" placeholder='' />

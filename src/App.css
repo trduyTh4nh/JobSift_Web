@@ -1198,7 +1198,6 @@ body.active_modal {
 }
 
 .border_left {
-  border-left: 1px solid #707070;
   padding: 0px 10px;
 }
 
@@ -1803,4 +1802,16 @@ body.active_modal {
   row-gap: 20px;
   padding: 15px;
   border-radius: 20px;
+}
+
+.diamond__body_right {
+  display: none !important;
+}
+
+.modal_content_Editpayment_top {
+  display: none !important;
+}
+
+.Single__payment {
+  display: none !important;
 }

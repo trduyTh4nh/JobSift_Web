@@ -32,6 +32,9 @@ const SingleDiamond = (props) => {
     };
 
 
+    const paymentMethod = () => {
+
+    }
 
     const openModalPayment = () => {
         setModalPayment(true);
@@ -78,7 +81,7 @@ const SingleDiamond = (props) => {
                                     <span>{cost_op}</span>
                                     <span>VND</span>
                                 </div>
-                                <button className='close_modal' onClick={openModalPaymentSuccess}>Thanh toán</button>
+                                <a className='close_modal' href='/payment' onClick={paymentMethod} >Thanh toán</a>
                             </div>
                             <div className='border_left'>
                                 <SingleCard_payment item={payment} />
@@ -114,7 +117,7 @@ const SingleDiamond = (props) => {
                                 <button className='close_modal' onClick={toggleModalSuccess}>Done</button>
                             </div>
                         </div>
-                    </div>
+                </div>
             )}
         </>
     )

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import SingleDiamond from './SingleDiamond';
 import SingleCard_payment from './SingleCard_payment';
 
 import iconDiamond from '../../assets/images/icon_diamond.svg';
 import LineImg from '../../assets/images/line.svg';
+import axios from 'axios';
+import { API_URL } from '../../ipConfig';
 
 const diamond = {
     diamond: 543,
@@ -28,14 +30,31 @@ const diamondOption3 = {
 }
 
 
+
 const Company_Diamond = () => {
+
+    const [currentDiamond, setCurrentDiamond] = useState()
+
+   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    axios.post('http://' + API_URL + ':3001' + '/diamond/' + user.id_user)
+    .then(e => {
+        setCurrentDiamond(e.data.diamond_count)
+    })
+    .catch((error) => {
+        console.log("Lỗi here: " + error)
+    })
+   }, [])
+    
+  
+
     return (
         <div className='main__layout-mini-Diamond'>
             <div className='diamond__header'>
                 <div className='diamond__header-left'>
                     <img src={iconDiamond} alt="" />
                     <div className='diamond__header-div'>
-                        <span>{diamond.diamond}</span>
+                        <span>{currentDiamond}</span>
                         <span>Kim cương</span>
                     </div>
                 </div>

@@ -6,6 +6,8 @@ import { API_URL } from '../../ipConfig';
 import layerMan from '../../assets/layerman.svg'
 import layerWoman from '../../assets/layerwomen.svg'
 import layer from '../../assets/layer3.svg'
+import { storage } from '../../firebase';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 
 const Company = {
   logo_comp: LogoCompanyImg,
@@ -18,7 +20,11 @@ const Company = {
 
 const CompanybtnEdit = () => {
 
+  const [fromData, setFormData] = useState({})
+
   const [enterprise, setEnterprise] = useState({})
+
+  const [logoCurrent, setLogoCurrent] = useState()
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'))
@@ -35,6 +41,25 @@ const CompanybtnEdit = () => {
     }
   }, [])
 
+
+  const handleEditInfo = () => {
+    console.log(fromData)
+
+    // axios.post(`http://${API_URL}:3001/signupntd`, fromData, {
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // }).then((result) => {
+
+
+    // }).catch((error) => {
+    //   alert("Email của bạn hoặc của doanh nghiệp đã tồn tại")
+    //   console.error(error)
+    // })
+
+  }
+
+
   const [logo, setLogo] = useState('')
 
   const handleImageChange = (event) => {
@@ -50,6 +75,47 @@ const CompanybtnEdit = () => {
 
       reader.readAsDataURL(file)
     }
+
+    setLogoCurrent(file)
+
+
+    if (logoCurrent) {
+      const storageRef = ref(storage, `images_nha_tuyen_dung/${logoCurrent.name}`);
+
+      const uploadTask = uploadBytesResumable(storageRef, logoCurrent);
+
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+          // eslint-disable-next-line default-case
+          switch (snapshot.state) {
+            case 'paused':
+              console.log('Upload is paused');
+              break;
+            case 'running':
+              console.log('Upload is running');
+              break;
+          }
+        },
+        (error) => {
+          console.log(error)
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            setFormData({
+              ...fromData,
+              imglogo_firebase: downloadURL
+            })
+            console.log('File available at', downloadURL);
+          });
+        }
+      );
+
+    } else {
+      console.log('No image selected');
+    }
+
   }
 
 
@@ -63,7 +129,7 @@ const CompanybtnEdit = () => {
         </div>
         <div className="profile__header-btn">
           <button className='profile__btn-cancel'>Cancel</button>
-          <button className='profile__btn-save'>Save</button>
+          <button className='profile__btn-save' onClick={handleEditInfo}>Save</button>
         </div>
 
       </div>
@@ -72,7 +138,20 @@ const CompanybtnEdit = () => {
         <div className="company__body-face">
           <div className="company__body-info-user">
             <span>Name</span>
-            <input type="text" value={enterprise ? enterprise.name_dn : ""} placeholder='Full name' />
+            <input
+              type="text"
+              value={enterprise ? enterprise.name_dn : fromData.namedn}
+              onChange={(event) => {
+                enterprise.name_dn = event.target.value
+                setFormData({
+                  ...fromData,
+                  namedn: event.target.value
+                });
+
+              }}
+              placeholder='Full name'
+            />
+
           </div>
 
           <div className="company__body-info-user1">
@@ -86,20 +165,40 @@ const CompanybtnEdit = () => {
 
           <div className="company__body-info-user">
             <span>Address</span>
-            <input type="ptext" value={enterprise ? enterprise.address : ""} placeholder='Full name' />
+            <input type="ptext" onChange={(text) => {
+              enterprise.address = text.target.value
+              setFormData({
+                ...fromData,
+                address: text.target.value
+              })
+            }} value={enterprise ? enterprise.address : ""} placeholder='Full name' />
           </div>
 
           <div className="company__body-info-user">
             <span>Email</span>
-            <input type="text" value={enterprise ? enterprise.email_dn : ""} placeholder='Full name' />
+            <input type="text" onChange={(text) => {
+              enterprise.email_dn = text.target.value
+              setFormData(
+                {
+                  ...fromData,
+                  emaildn: text.target.value
+                }
+              )
+            }} value={enterprise ? enterprise.email_dn : ""} placeholder='Full name' />
           </div>
         </div>
       </div>
 
       <div className='company__body-description'>
         <span>Description</span>
-        <div className='bg__description'>
-          <p>{enterprise ? enterprise.description : ""}</p>
+        <div className='company__body-info-user'>
+          <input type="text" value={enterprise ? enterprise.description : ""}  onChange={(text) => {
+            enterprise.description = text.target.value
+            setFormData({
+              ...fromData,
+              description: text.target.value
+            })
+          }} placeholder='Description' />
         </div>
       </div>
 
