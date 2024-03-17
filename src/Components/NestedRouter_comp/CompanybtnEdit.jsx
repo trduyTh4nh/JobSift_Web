@@ -43,21 +43,58 @@ const CompanybtnEdit = () => {
 
 
   const handleEditInfo = () => {
+    console.log(fromData);
+
+    if (logoCurrent) {
+      const storageRef = ref(storage, `images_nha_tuyen_dung/${logoCurrent.name}`);
+      const uploadTask = uploadBytesResumable(storageRef, logoCurrent);
+
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+        },
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+           
+            console.log('File available at', downloadURL);
+
+            callApi(downloadURL);
+          });
+        }
+      );
+    } else {
+      console.log('No image selected');
+      callApi();
+    }
+  };
+
+  const callApi = (logo) => {
+    setFormData({
+      ...fromData,
+      imglogo_firebase: logo
+    });
     console.log(fromData)
+    axios
+      .post(`http://${API_URL}:3001/editinfodn/${enterprise.id_dn}`, fromData, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((result) => {
+        alert('Chỉnh sửa thành công!');
+        window.location.reload();
+      })
+      .catch((error) => {
+        alert('Email của bạn hoặc của doanh nghiệp đã tồn tại');
+        console.error(error);
+      });
+  };
 
-    // axios.post(`http://${API_URL}:3001/signupntd`, fromData, {
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // }).then((result) => {
-
-
-    // }).catch((error) => {
-    //   alert("Email của bạn hoặc của doanh nghiệp đã tồn tại")
-    //   console.error(error)
-    // })
-
-  }
 
 
   const [logo, setLogo] = useState('')
@@ -68,53 +105,17 @@ const CompanybtnEdit = () => {
 
     if (file) {
       const reader = new FileReader();
+      setLogoCurrent(file)
 
       reader.onloadend = () => {
         setLogo(reader.result)
       }
-
       reader.readAsDataURL(file)
     }
 
-    setLogoCurrent(file)
 
 
-    if (logoCurrent) {
-      const storageRef = ref(storage, `images_nha_tuyen_dung/${logoCurrent.name}`);
 
-      const uploadTask = uploadBytesResumable(storageRef, logoCurrent);
-
-      uploadTask.on('state_changed',
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
-          // eslint-disable-next-line default-case
-          switch (snapshot.state) {
-            case 'paused':
-              console.log('Upload is paused');
-              break;
-            case 'running':
-              console.log('Upload is running');
-              break;
-          }
-        },
-        (error) => {
-          console.log(error)
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setFormData({
-              ...fromData,
-              imglogo_firebase: downloadURL
-            })
-            console.log('File available at', downloadURL);
-          });
-        }
-      );
-
-    } else {
-      console.log('No image selected');
-    }
 
   }
 
@@ -192,7 +193,7 @@ const CompanybtnEdit = () => {
       <div className='company__body-description'>
         <span>Description</span>
         <div className='company__body-info-user'>
-          <input type="text" value={enterprise ? enterprise.description : ""}  onChange={(text) => {
+          <input type="text" value={enterprise ? enterprise.description : ""} onChange={(text) => {
             enterprise.description = text.target.value
             setFormData({
               ...fromData,

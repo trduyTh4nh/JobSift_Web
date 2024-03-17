@@ -1815,3 +1815,9 @@ body.active_modal {
 .Single__payment {
   display: none !important;
 }
+
+
+.company__header-face img{
+  border-radius: 1rem;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
